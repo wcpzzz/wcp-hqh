@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatislearn.dao.user.ThingandtypeMapper" >
+  <resultMap id="BaseResultMap" type="com.mybatislearn.dao.user.model.Thingandtype" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="thing_id" property="thingId" jdbcType="INTEGER" />
+    <result column="thingtype_id" property="thingtypeId" jdbcType="INTEGER" />
+    <result column="modi_time" property="modiTime" jdbcType="TIMESTAMP" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="master" property="master" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, thing_id, thingtype_id, modi_time, creater, master
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from thingandtype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from thingandtype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from thingandtype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" >
+    delete from thingandtype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+    insert into thingandtype (id, thing_id, thingtype_id, 
+      modi_time, creater, master
+      )
+    values (#{id,jdbcType=INTEGER}, #{thingId,jdbcType=INTEGER}, #{thingtypeId,jdbcType=INTEGER}, 
+      #{modiTime,jdbcType=TIMESTAMP}, #{creater,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+    insert into thingandtype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="thingId != null" >
+        thing_id,
+      </if>
+      <if test="thingtypeId != null" >
+        thingtype_id,
+      </if>
+      <if test="modiTime != null" >
+        modi_time,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="master != null" >
+        master,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="thingId != null" >
+        #{thingId,jdbcType=INTEGER},
+      </if>
+      <if test="thingtypeId != null" >
+        #{thingtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="modiTime != null" >
+        #{modiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        #{master,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" resultType="java.lang.Integer" >
+    select count(*) from thingandtype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update thingandtype
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.thingId != null" >
+        thing_id = #{record.thingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.thingtypeId != null" >
+        thingtype_id = #{record.thingtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.modiTime != null" >
+        modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creater != null" >
+        creater = #{record.creater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.master != null" >
+        master = #{record.master,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update thingandtype
+    set id = #{record.id,jdbcType=INTEGER},
+      thing_id = #{record.thingId,jdbcType=INTEGER},
+      thingtype_id = #{record.thingtypeId,jdbcType=INTEGER},
+      modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
+      creater = #{record.creater,jdbcType=VARCHAR},
+      master = #{record.master,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+    update thingandtype
+    <set >
+      <if test="thingId != null" >
+        thing_id = #{thingId,jdbcType=INTEGER},
+      </if>
+      <if test="thingtypeId != null" >
+        thingtype_id = #{thingtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="modiTime != null" >
+        modi_time = #{modiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        master = #{master,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+    update thingandtype
+    set thing_id = #{thingId,jdbcType=INTEGER},
+      thingtype_id = #{thingtypeId,jdbcType=INTEGER},
+      modi_time = #{modiTime,jdbcType=TIMESTAMP},
+      creater = #{creater,jdbcType=VARCHAR},
+      master = #{master,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
