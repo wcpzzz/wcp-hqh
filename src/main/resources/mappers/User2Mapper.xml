@@ -114,15 +114,9 @@
       #{modiTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.mybatislearn.dao.user.model.User2" >
-<!--    <selectKey resultType="java.lang.String" keyProperty="userId" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>-->
-      <selectKey keyProperty="userId" resultType="java.lang.String" order="BEFORE">
-          select replace(uuid(), '-', '') as userId from user2
-      </selectKey>
     insert into user2
     <trim prefix="(" suffix=")" suffixOverrides="," >
-    user_id,
+        user_id,
       <if test="userName != null" >
         user_name,
       </if>
@@ -146,7 +140,7 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-        userId,
+        #{userId,jdbcType=VARCHAR},
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>

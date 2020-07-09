@@ -12,7 +12,7 @@ import com.mybatislearn.service.user.User2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
+import java.util.UUID;
 import java.util.List;
 
 /**
@@ -28,6 +28,9 @@ public class User2ServiceImpl implements User2Service {
 
     @Override
     public String create(User2 user) {
+        //使用uuid作为主键
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        user.setUserId (uuid);
         user2Mapper.insertSelective(user);
         return user.getUserId ();
     }
