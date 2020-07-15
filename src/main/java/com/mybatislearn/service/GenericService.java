@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 示例Service定义
- *
+ * 基本增删改查全调这个接口
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
