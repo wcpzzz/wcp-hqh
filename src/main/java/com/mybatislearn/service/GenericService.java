@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * 示例Service定义
  * 基本增删改查全调这个接口
+ *
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
@@ -24,9 +25,9 @@ public interface GenericService<Record, Id> {
 
     void updateByIdInBatch(List<Record> records);
 
-    User2 findById(Id id);
+    Record findById(Id id);
 
-    User2 findOne(Record record);
+    Record findOne(Record record);
 
     List<Record> findList(Record condition);
 
