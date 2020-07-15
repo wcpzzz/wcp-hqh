@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.mybatislearn.service.user.GenericService;
+import com.mybatislearn.service.GenericService;
 /**
  * 示例Controller
  * @author wcpzzz
