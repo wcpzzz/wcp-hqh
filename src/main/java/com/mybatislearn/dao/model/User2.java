@@ -1,4 +1,4 @@
-package com.mybatislearn.dao.user.model;
+package com.mybatislearn.dao.model;
 
 import java.util.Date;
 

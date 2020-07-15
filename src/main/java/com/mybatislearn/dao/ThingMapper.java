@@ -1,7 +1,7 @@
-package com.mybatislearn.dao.user;
+package com.mybatislearn.dao;
 
-import com.mybatislearn.dao.user.model.Thing;
-import com.mybatislearn.dao.user.model.ThingExample;
+import com.mybatislearn.dao.model.Thing;
+import com.mybatislearn.dao.model.ThingExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

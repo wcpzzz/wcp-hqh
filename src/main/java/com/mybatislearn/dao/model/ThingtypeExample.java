@@ -1,17 +1,17 @@
-package com.mybatislearn.dao.user.model;
+package com.mybatislearn.dao.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ThingandtypeExample {
+public class ThingtypeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ThingandtypeExample() {
+    public ThingtypeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,123 +165,73 @@ public class ThingandtypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andThingIdIsNull() {
-            addCriterion("thing_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdIsNotNull() {
-            addCriterion("thing_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdEqualTo(Integer value) {
-            addCriterion("thing_id =", value, "thingId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdNotEqualTo(Integer value) {
-            addCriterion("thing_id <>", value, "thingId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdGreaterThan(Integer value) {
-            addCriterion("thing_id >", value, "thingId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("thing_id >=", value, "thingId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdLessThan(Integer value) {
-            addCriterion("thing_id <", value, "thingId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdLessThanOrEqualTo(Integer value) {
-            addCriterion("thing_id <=", value, "thingId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdIn(List<Integer> values) {
-            addCriterion("thing_id in", values, "thingId");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdNotIn(List<Integer> values) {
-            addCriterion("thing_id not in", values, "thingId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdBetween(Integer value1, Integer value2) {
-            addCriterion("thing_id between", value1, value2, "thingId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("thing_id not between", value1, value2, "thingId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingtypeIdIsNull() {
-            addCriterion("thingtype_id is null");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andThingtypeIdIsNotNull() {
-            addCriterion("thingtype_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdEqualTo(Integer value) {
-            addCriterion("thingtype_id =", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdNotEqualTo(Integer value) {
-            addCriterion("thingtype_id <>", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdGreaterThan(Integer value) {
-            addCriterion("thingtype_id >", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("thingtype_id >=", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdLessThan(Integer value) {
-            addCriterion("thingtype_id <", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdLessThanOrEqualTo(Integer value) {
-            addCriterion("thingtype_id <=", value, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdIn(List<Integer> values) {
-            addCriterion("thingtype_id in", values, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdNotIn(List<Integer> values) {
-            addCriterion("thingtype_id not in", values, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdBetween(Integer value1, Integer value2) {
-            addCriterion("thingtype_id between", value1, value2, "thingtypeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andThingtypeIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("thingtype_id not between", value1, value2, "thingtypeId");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 

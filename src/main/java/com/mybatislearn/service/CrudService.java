@@ -1,8 +1,8 @@
-package com.mybatislearn.service.user;
+package com.mybatislearn.service;
+
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
-import com.mybatislearn.dao.user.model.User2;
-
+import com.mybatislearn.dao.model.User;
 import java.util.List;
 
 /**
@@ -10,75 +10,74 @@ import java.util.List;
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
-public interface User2Service {
+public interface CrudService {
 
     /**
      * 创建
      * @author wcpzzz
      * @date 2020/07/06 10:09
-     * @return
      */
-    String create(User2 user);
+    Integer create(User user);
 
     /**
      * 主键删除
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    void deleteById(String id);
+    void deleteById(Integer id);
 
     /**
      * 批量主键删除
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    void deleteByIdInBatch(List<String> ids);
+    void deleteByIdInBatch(List<Integer> ids);
 
     /**
      * 主键更新
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    void updateById(User2 user);
+    void updateById(User user);
 
     /**
      * 批量主键更新
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    void updateByIdInBatch(List<User2> users);
+    void updateByIdInBatch(List<User> users);
 
     /**
      * 主键查询
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    User2 findById(String id);
+    User findById(Integer id);
 
     /**
      * 条件查询单条记录
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    User2 findOne(User2 user);
+    User findOne(User user);
 
     /**
      * 条件查询
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    List<User2> findList(User2 user);
+    List<User> findList(User user);
 
     /**
      * 分页查询
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    PageData<User2> findPage(PageWrap<User2> pageWrap);
+    PageData<User> findPage(PageWrap<User> pageWrap);
     /**
      * 条件统计
      * @author wcpzzz
      * @date 2020/07/06 10:09
      */
-    long count(User2 user);
+    long count(User user);
 }

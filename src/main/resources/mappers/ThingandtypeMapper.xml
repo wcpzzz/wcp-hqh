@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mybatislearn.dao.user.ThingandtypeMapper" >
-  <resultMap id="BaseResultMap" type="com.mybatislearn.dao.user.model.Thingandtype" >
+<mapper namespace="com.mybatislearn.dao.ThingandtypeMapper" >
+  <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.Thingandtype" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="thing_id" property="thingId" jdbcType="INTEGER" />
     <result column="thingtype_id" property="thingtypeId" jdbcType="INTEGER" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, thing_id, thingtype_id, modi_time, creater, master
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatislearn.dao.model.ThingandtypeExample" >
     select
     <if test="distinct" >
       distinct
@@ -85,7 +85,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from thingandtype
     where id = #{id,jdbcType=INTEGER}
@@ -94,21 +94,21 @@
     delete from thingandtype
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" >
+  <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.ThingandtypeExample" >
     delete from thingandtype
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
-    insert into thingandtype (id, thing_id, thingtype_id, 
+  <insert id="insert" parameterType="com.mybatislearn.dao.model.Thingandtype" >
+    insert into thingandtype (id, thing_id, thingtype_id,
       modi_time, creater, master
       )
-    values (#{id,jdbcType=INTEGER}, #{thingId,jdbcType=INTEGER}, #{thingtypeId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{thingId,jdbcType=INTEGER}, #{thingtypeId,jdbcType=INTEGER},
       #{modiTime,jdbcType=TIMESTAMP}, #{creater,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+  <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.Thingandtype" >
     insert into thingandtype
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mybatislearn.dao.user.model.ThingandtypeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.mybatislearn.dao.model.ThingandtypeExample" resultType="java.lang.Integer" >
     select count(*) from thingandtype
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.Thingandtype" >
     update thingandtype
     <set >
       <if test="thingId != null" >
@@ -216,7 +216,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.user.model.Thingandtype" >
+  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.Thingandtype" >
     update thingandtype
     set thing_id = #{thingId,jdbcType=INTEGER},
       thingtype_id = #{thingtypeId,jdbcType=INTEGER},

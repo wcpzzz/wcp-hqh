@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mybatislearn.dao.user.User2Mapper" >
-  <resultMap id="BaseResultMap" type="com.mybatislearn.dao.user.model.User2" >
+<mapper namespace="com.mybatislearn.dao.User2Mapper" >
+  <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.User2" >
     <id column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     user_id, user_name, mobile, email, role, user_master, user_slave, modi_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatislearn.dao.user.model.User2Example" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatislearn.dao.model.User2Example" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from user2
     where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mybatislearn.dao.user.model.User2Example" >
+  <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.User2Example" >
     delete from user2
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mybatislearn.dao.user.model.User2" >
+  <insert id="insert" parameterType="com.mybatislearn.dao.model.User2" >
     <selectKey resultType="java.lang.String" keyProperty="userId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -113,7 +113,7 @@
       #{role,jdbcType=VARCHAR}, #{userMaster,jdbcType=VARCHAR}, #{userSlave,jdbcType=VARCHAR},
       #{modiTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.mybatislearn.dao.user.model.User2" >
+  <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.User2" >
     insert into user2
     <trim prefix="(" suffix=")" suffixOverrides="," >
         user_id,
@@ -164,7 +164,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mybatislearn.dao.user.model.User2Example" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.mybatislearn.dao.model.User2Example" resultType="java.lang.Integer" >
     select count(*) from user2
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -216,7 +216,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.user.model.User2" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.User2" >
     update user2
     <set >
       <if test="userName != null" >
@@ -243,7 +243,7 @@
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.user.model.User2" >
+  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.User2" >
     update user2
     set user_name = #{userName,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},

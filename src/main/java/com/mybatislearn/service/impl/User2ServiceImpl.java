@@ -1,14 +1,14 @@
-package com.mybatislearn.service.user.impl;
+package com.mybatislearn.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
 import com.mybatislearn.core.utils.ExampleBuilder;
-import com.mybatislearn.dao.user.User2Mapper;
-import com.mybatislearn.dao.user.model.User2;
-import com.mybatislearn.dao.user.model.User2Example;
-import com.mybatislearn.service.user.User2Service;
+import com.mybatislearn.dao.User2Mapper;
+import com.mybatislearn.dao.model.User2;
+import com.mybatislearn.dao.model.User2Example;
+import com.mybatislearn.service.User2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -69,6 +69,7 @@ public class User2ServiceImpl implements User2Service {
     @Override
     public User2 findOne(User2 user) {
         ExampleBuilder<User2Example, User2Example.Criteria> builder = ExampleBuilder.create(User2Example.class, User2Example.Criteria.class);
+//        就是打包一下
         List<User2> users = user2Mapper.selectByExample(builder.buildExamplePack(user).getExample());
         if (users.size() > 0) {
             return users.get(0);

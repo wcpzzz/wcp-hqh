@@ -1,19 +1,19 @@
-package com.mybatislearn.dao.user.model;
+package com.mybatislearn.dao.model;
 
 import java.util.Date;
 
-public class Thingandlocation {
+public class Thingandtype {
     private Integer id;
 
     private Integer thingId;
 
-    private Integer locationId;
+    private Integer thingtypeId;
+
+    private Date modiTime;
 
     private String creater;
 
     private String master;
-
-    private Date modiTime;
 
     public Integer getId() {
         return id;
@@ -31,12 +31,20 @@ public class Thingandlocation {
         this.thingId = thingId;
     }
 
-    public Integer getLocationId() {
-        return locationId;
+    public Integer getThingtypeId() {
+        return thingtypeId;
     }
 
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
+    public void setThingtypeId(Integer thingtypeId) {
+        this.thingtypeId = thingtypeId;
+    }
+
+    public Date getModiTime() {
+        return modiTime;
+    }
+
+    public void setModiTime(Date modiTime) {
+        this.modiTime = modiTime;
     }
 
     public String getCreater() {
@@ -53,13 +61,5 @@ public class Thingandlocation {
 
     public void setMaster(String master) {
         this.master = master == null ? null : master.trim();
-    }
-
-    public Date getModiTime() {
-        return modiTime;
-    }
-
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
     }
 }

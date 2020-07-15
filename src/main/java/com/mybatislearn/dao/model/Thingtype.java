@@ -1,13 +1,11 @@
-package com.mybatislearn.dao.user.model;
+package com.mybatislearn.dao.model;
 
 import java.util.Date;
 
-public class Thingandtype {
+public class Thingtype {
     private Integer id;
 
-    private Integer thingId;
-
-    private Integer thingtypeId;
+    private String name;
 
     private Date modiTime;
 
@@ -23,20 +21,12 @@ public class Thingandtype {
         this.id = id;
     }
 
-    public Integer getThingId() {
-        return thingId;
+    public String getName() {
+        return name;
     }
 
-    public void setThingId(Integer thingId) {
-        this.thingId = thingId;
-    }
-
-    public Integer getThingtypeId() {
-        return thingtypeId;
-    }
-
-    public void setThingtypeId(Integer thingtypeId) {
-        this.thingtypeId = thingtypeId;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Date getModiTime() {

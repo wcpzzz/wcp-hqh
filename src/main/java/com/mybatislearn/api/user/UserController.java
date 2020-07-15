@@ -3,15 +3,12 @@ package com.mybatislearn.api.user;
 import com.mybatislearn.api.BaseController;
 import com.mybatislearn.core.model.ApiResponse;
 import com.mybatislearn.core.model.PageWrap;
-import com.mybatislearn.dao.user.model.User;
-import com.mybatislearn.service.user.UserService;
+import com.mybatislearn.dao.model.User;
+import com.mybatislearn.service.CrudService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 /**
  * 示例Controller
@@ -24,7 +21,7 @@ import java.util.List;
 public class UserController extends BaseController {
 
     @Autowired
-    private UserService userService;
+    private CrudService userService;
 
     /**
      * 创建

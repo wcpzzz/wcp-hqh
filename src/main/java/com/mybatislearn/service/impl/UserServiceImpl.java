@@ -1,12 +1,12 @@
-package com.mybatislearn.service.user.impl;
+package com.mybatislearn.service.impl;
 
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
 import com.mybatislearn.core.utils.ExampleBuilder;
-import com.mybatislearn.dao.user.UserMapper;
-import com.mybatislearn.dao.user.model.User;
-import com.mybatislearn.dao.user.model.UserExample;
-import com.mybatislearn.service.user.UserService;
+import com.mybatislearn.dao.UserMapper;
+import com.mybatislearn.dao.model.User;
+import com.mybatislearn.dao.model.UserExample;
+import com.mybatislearn.service.CrudService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
  * @date 2020/07/06 10:09
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements CrudService {
 
     @Autowired
     private UserMapper userMapper;
