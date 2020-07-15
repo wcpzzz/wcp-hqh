@@ -1,7 +1,7 @@
-package com.mybatislearn.service.user;
+package com.mybatislearn.service;
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
-import com.mybatislearn.dao.user.model.User2;
+import com.mybatislearn.dao.model.User2;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
-public interface GenericService <Record, Id>{
+public interface GenericService<Record, Id>{
 
     Id create(Record record);
     void deleteById(Id id);

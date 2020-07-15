@@ -4,7 +4,7 @@ import com.mybatislearn.api.BaseController;
 import com.mybatislearn.core.model.ApiResponse;
 import com.mybatislearn.core.model.PageWrap;
 import com.mybatislearn.dao.model.User;
-import com.mybatislearn.service.CrudService;
+import com.mybatislearn.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends BaseController {
 
     @Autowired
-    private CrudService userService;
+    private UserService userService;
 
     /**
      * 创建

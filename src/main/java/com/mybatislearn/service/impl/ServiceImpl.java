@@ -1,23 +1,20 @@
-package com.mybatislearn.service.user.impl;
+package com.mybatislearn.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
 import com.mybatislearn.core.utils.ExampleBuilder;
-import com.mybatislearn.dao.user.User2Mapper;
-import com.mybatislearn.dao.user.model.User2;
-import com.mybatislearn.dao.user.model.User2Example;
-import com.mybatislearn.service.user.GenericService;
-import com.mybatislearn.service.user.User2Service;
+import com.mybatislearn.dao.User2Mapper;
+import com.mybatislearn.dao.model.User2;
+import com.mybatislearn.dao.model.User2Example;
+import com.mybatislearn.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import net.bytebuddy.dynamic.scaffold.TypeWriter.FieldPool.Record;
-
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 示例Service实现

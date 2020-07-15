@@ -6,7 +6,7 @@ import com.mybatislearn.core.utils.ExampleBuilder;
 import com.mybatislearn.dao.UserMapper;
 import com.mybatislearn.dao.model.User;
 import com.mybatislearn.dao.model.UserExample;
-import com.mybatislearn.service.CrudService;
+import com.mybatislearn.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
  * @date 2020/07/06 10:09
  */
 @Service
-public class UserServiceImpl implements CrudService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;

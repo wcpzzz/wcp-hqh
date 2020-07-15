@@ -10,7 +10,7 @@ import java.util.List;
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
-public interface CrudService {
+public interface UserService {
 
     /**
      * 创建
