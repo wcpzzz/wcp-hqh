@@ -9,7 +9,6 @@ import com.mybatislearn.dao.User2Mapper;
 import com.mybatislearn.dao.model.User2;
 import com.mybatislearn.dao.model.User2Example;
 import com.mybatislearn.service.GenericService;
-import com.mybatislearn.service.User2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

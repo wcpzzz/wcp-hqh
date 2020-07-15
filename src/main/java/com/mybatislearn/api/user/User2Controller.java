@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class User2Controller extends BaseController {
 
     @Autowired
-    private GenericService genericService;
+    private GenericService<User2,String> genericService;
 
     /**
      * 创建
