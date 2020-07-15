@@ -3,7 +3,7 @@ package com.mybatislearn.api.user;
 import com.mybatislearn.api.BaseController;
 import com.mybatislearn.core.model.ApiResponse;
 import com.mybatislearn.core.model.PageWrap;
-import com.mybatislearn.dao.model.User2;
+import com.mybatislearn.dao.model.Thingandlocation;
 import com.mybatislearn.service.GenericService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
  * @date 2020/07/06 10:09
  */
 @RestController
-@RequestMapping("/user2")
-@Api(tags = "User2 用户表")
-public class User2Controller extends BaseController {
+@RequestMapping("/thingandlocation")
+@Api(tags = "Thingandlocation  物品&地点关联表")
+public class ThingandlocationController extends BaseController {
 
     @Autowired
-    private GenericService<User2,String> genericService;
+    private GenericService<Thingandlocation,Integer> genericService;
 
     /**
      * 创建
@@ -30,7 +30,7 @@ public class User2Controller extends BaseController {
      */
     @PostMapping("/create")
     @ApiOperation("创建")
-    public ApiResponse<User2> create(@RequestBody User2 req) {
+    public ApiResponse<Thingandlocation> create(@RequestBody Thingandlocation req) {
         return ApiResponse.success(genericService.create(req));
     }
 
@@ -41,7 +41,7 @@ public class User2Controller extends BaseController {
      */
     @GetMapping("/{id}")
     @ApiOperation("根据ID查询")
-    public ApiResponse<User2> finById(@PathVariable String id) {
+    public ApiResponse<Thingandlocation> finById(@PathVariable Integer id) {
         return ApiResponse.success(genericService.findById(id));
     }
 
@@ -52,7 +52,7 @@ public class User2Controller extends BaseController {
      */
     @PostMapping("/page")
     @ApiOperation("分页查询")
-    public ApiResponse findPage (@RequestBody PageWrap<User2> pageWrap) {
+    public ApiResponse findPage (@RequestBody PageWrap<Thingandlocation> pageWrap) {
         return ApiResponse.success(genericService.findPage(pageWrap));
     }
 
@@ -63,7 +63,7 @@ public class User2Controller extends BaseController {
      */
     @PostMapping("/updateById")
     @ApiOperation("根据ID修改")
-    public ApiResponse<User2> updateById(@RequestBody User2 req) {
+    public ApiResponse<Thingandlocation> updateById(@RequestBody Thingandlocation req) {
         genericService.updateById(req);
         return ApiResponse.success(null);
     }
@@ -75,7 +75,7 @@ public class User2Controller extends BaseController {
      */
     @GetMapping("/delete/{id}")
     @ApiOperation("根据ID删除")
-    public ApiResponse delete(@PathVariable String id) {
+    public ApiResponse delete(@PathVariable Integer id) {
         genericService.deleteById(id);
         return ApiResponse.success(null);
     }

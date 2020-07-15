@@ -2,7 +2,6 @@ package com.mybatislearn.service;
 
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
-import com.mybatislearn.dao.model.User2;
 
 import java.util.List;
 
