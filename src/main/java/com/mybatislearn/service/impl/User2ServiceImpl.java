@@ -8,6 +8,7 @@ import com.mybatislearn.core.utils.ExampleBuilder;
 import com.mybatislearn.dao.User2Mapper;
 import com.mybatislearn.dao.model.User2;
 import com.mybatislearn.dao.model.User2Example;
+import com.mybatislearn.service.GenericService;
 import com.mybatislearn.service.User2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.List;
  * @date 2020/07/06 10:09
  */
 @Service
-public class User2ServiceImpl implements User2Service {
+public class User2ServiceImpl implements GenericService<User2, String> {
 
     @Autowired
     private User2Mapper user2Mapper;
