@@ -1,14 +1,12 @@
 package com.mybatislearn.dao;
 
-import com.mybatislearn.dao.model.User2Example;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface GenericMapper<Record, Id> {
-    int countByExample(User2Example example);
+public abstract interface GenericMapper<Record, Id, RecordMapper> {
+    int countByExample(RecordMapper example);
 
-    int deleteByExample(User2Example example);
+    int deleteByExample(RecordMapper example);
 
     int deleteByPrimaryKey(Id userId);
 
@@ -16,13 +14,13 @@ public interface GenericMapper<Record, Id> {
 
     int insertSelective(Record record);
 
-    List<Record> selectByExample(User2Example example);
+    List<Record> selectByExample(RecordMapper example);
 
     Record selectByPrimaryKey(Id userId);
 
-    int updateByExampleSelective(@Param("record") Record record, @Param("example") User2Example example);
+    int updateByExampleSelective(@Param("record") Record record, @Param("example") RecordMapper example);
 
-    int updateByExample(@Param("record") Record record, @Param("example") User2Example example);
+    int updateByExample(@Param("record") Record record, @Param("example") RecordMapper example);
 
     int updateByPrimaryKeySelective(Record record);
 

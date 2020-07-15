@@ -2,64 +2,28 @@ package com.mybatislearn.dao.model;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Thingandlocation {
-    private Integer id;
+    @Getter @Setter private Integer id;
 
-    private Integer thingId;
+    @Getter @Setter private Integer thingId;
 
-    private Integer locationId;
+    @Getter @Setter private Integer locationId;
 
-    private String creater;
+    @Getter private String creater;
 
-    private String master;
+    @Getter private String master;
 
-    private Date modiTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getThingId() {
-        return thingId;
-    }
-
-    public void setThingId(Integer thingId) {
-        this.thingId = thingId;
-    }
-
-    public Integer getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
-    }
-
-    public String getCreater() {
-        return creater;
-    }
+    @Getter @Setter private Date modiTime;
 
     public void setCreater(String creater) {
         this.creater = creater == null ? null : creater.trim();
-    }
-
-    public String getMaster() {
-        return master;
     }
 
     public void setMaster(String master) {
         this.master = master == null ? null : master.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
-    }
-
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
-    }
 }

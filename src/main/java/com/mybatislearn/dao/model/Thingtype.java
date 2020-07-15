@@ -2,51 +2,26 @@ package com.mybatislearn.dao.model;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Thingtype {
-    private Integer id;
+    @Getter @Setter private Integer id;
 
-    private String name;
+    @Getter private String name;
 
-    private Date modiTime;
+    @Getter @Setter private Date modiTime;
 
-    private String creater;
+    @Getter private String creater;
 
-    private String master;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
+    @Getter private String master;
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
-    }
-
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
-    }
-
-    public String getCreater() {
-        return creater;
-    }
-
     public void setCreater(String creater) {
         this.creater = creater == null ? null : creater.trim();
-    }
-
-    public String getMaster() {
-        return master;
     }
 
     public void setMaster(String master) {

@@ -15,13 +15,13 @@ public abstract class GenericController<Record, Id> extends BaseController {
 
     @PostMapping("/create")
     @ApiOperation("创建")
-    public ApiResponse<Record> create(@RequestBody Record req) {
+    public ApiResponse create(@RequestBody Record req) {
         return ApiResponse.success(genericService.create(req));
     }
 
     @GetMapping("/{id}")
     @ApiOperation("根据ID查询")
-    public ApiResponse<Record> finById(@PathVariable Id id) {
+    public ApiResponse finById(@PathVariable Id id) {
         return ApiResponse.success(genericService.findById(id));
     }
 
@@ -33,7 +33,7 @@ public abstract class GenericController<Record, Id> extends BaseController {
 
     @PostMapping("/updateById")
     @ApiOperation("根据ID修改")
-    public ApiResponse<Record> updateById(@RequestBody Record req) {
+    public ApiResponse updateById(@RequestBody Record req) {
         genericService.updateById(req);
         return ApiResponse.success(null);
     }
