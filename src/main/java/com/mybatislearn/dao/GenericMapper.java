@@ -1,3 +1,4 @@
+/*
 package com.mybatislearn.dao;
 
 import com.mybatislearn.dao.model.User2Example;
@@ -28,3 +29,4 @@ public interface GenericMapper<Record, Id> {
 
     int updateByPrimaryKey(Record record);
 }
+*/
