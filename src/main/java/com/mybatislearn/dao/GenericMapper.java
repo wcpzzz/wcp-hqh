@@ -1,3 +1,4 @@
+/*
 package com.mybatislearn.dao;
 
 import java.util.List;
@@ -26,3 +27,4 @@ public abstract interface GenericMapper<Record, Id, RecordMapper> {
 
     int updateByPrimaryKey(Record record);
 }
+*/
