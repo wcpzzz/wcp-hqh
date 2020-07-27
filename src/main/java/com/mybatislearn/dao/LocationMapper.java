@@ -2,13 +2,11 @@ package com.mybatislearn.dao;
 
 import com.mybatislearn.dao.model.Location;
 import com.mybatislearn.dao.model.LocationExample;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface LocationMapper {
-
-    int countByExample(LocationExample example);
+    long countByExample(LocationExample example);
 
     int deleteByExample(LocationExample example);
 

@@ -21,10 +21,20 @@ public abstract class GenericController<Record, Id> extends BaseController {
 
     @GetMapping("/{id}")
     @ApiOperation("根据ID查询")
-    public ApiResponse<Record> finById(@PathVariable Id id) {
+    public ApiResponse<Record> findById(@PathVariable Id id) {
         return ApiResponse.success(genericService.findById(id));
     }
 
+    @PostMapping("/findOne")
+    @ApiOperation("根据类查询单个")
+    public ApiResponse<Record> findOne(@RequestBody Record req) {
+        return ApiResponse.success(genericService.findOne(req));
+    }
+    @PostMapping("/findList")
+    @ApiOperation("根据类查询列表")
+    public ApiResponse<Record> findOList(@RequestBody Record req) {
+        return ApiResponse.success(genericService.findList(req));
+    }
     @PostMapping("/page")
     @ApiOperation("分页查询")
     public ApiResponse findPage (@RequestBody PageWrap<Record> pageWrap) {

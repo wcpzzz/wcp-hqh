@@ -2,14 +2,11 @@ package com.mybatislearn.dao;
 
 import com.mybatislearn.dao.model.Thingandtype;
 import com.mybatislearn.dao.model.ThingandtypeExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface ThingandtypeMapper {
-
-    int countByExample(ThingandtypeExample example);
+    long countByExample(ThingandtypeExample example);
 
     int deleteByExample(ThingandtypeExample example);
 

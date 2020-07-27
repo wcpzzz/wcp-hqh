@@ -1,22 +1,32 @@
 package com.mybatislearn.dao.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class Location {
+    @ApiModelProperty("")
     private Integer id;
 
+    @ApiModelProperty("地点名称")
     private String locationName;
 
+    @ApiModelProperty("地点注释")
     private String locationMemo;
 
+    @ApiModelProperty("地点上级")
     private String locationMaster;
 
+    @ApiModelProperty("地点下属")
     private String locationSlave;
 
+    @ApiModelProperty("修改时间")
     private Date modiTime;
 
+    @ApiModelProperty("创建者")
     private String creater;
 
+    @ApiModelProperty("管理者")
     private String master;
 
     public Integer getId() {

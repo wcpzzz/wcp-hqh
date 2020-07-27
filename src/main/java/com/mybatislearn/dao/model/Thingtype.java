@@ -1,16 +1,23 @@
 package com.mybatislearn.dao.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class Thingtype {
+    @ApiModelProperty("")
     private Integer id;
 
-    private String name;
+    @ApiModelProperty("类型名称")
+    private String thingtypeName;
 
+    @ApiModelProperty("修改时间")
     private Date modiTime;
 
+    @ApiModelProperty("创建者")
     private String creater;
 
+    @ApiModelProperty("管理员")
     private String master;
 
     public Integer getId() {
@@ -21,12 +28,12 @@ public class Thingtype {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getThingtypeName() {
+        return thingtypeName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setThingtypeName(String thingtypeName) {
+        this.thingtypeName = thingtypeName == null ? null : thingtypeName.trim();
     }
 
     public Date getModiTime() {

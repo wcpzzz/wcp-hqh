@@ -1,22 +1,32 @@
 package com.mybatislearn.dao.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class User2 {
+    @ApiModelProperty("uuid字符串")
     private String userId;
 
+    @ApiModelProperty("用户名")
     private String userName;
 
+    @ApiModelProperty("手机号")
     private String mobile;
 
+    @ApiModelProperty("邮箱")
     private String email;
 
+    @ApiModelProperty("角色（1、终极管理员；2、管理员可以加人，可以改成员，不能改平级管理员；3、成员不能加人）")
     private String role;
 
+    @ApiModelProperty("用户的上级")
     private String userMaster;
 
+    @ApiModelProperty("用户的下属")
     private String userSlave;
 
+    @ApiModelProperty("修改时间")
     private Date modiTime;
 
     public String getUserId() {

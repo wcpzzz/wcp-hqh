@@ -2,13 +2,11 @@ package com.mybatislearn.dao;
 
 import com.mybatislearn.dao.model.User2;
 import com.mybatislearn.dao.model.User2Example;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface User2Mapper {
-
-    int countByExample(User2Example example);
+    long countByExample(User2Example example);
 
     int deleteByExample(User2Example example);
 

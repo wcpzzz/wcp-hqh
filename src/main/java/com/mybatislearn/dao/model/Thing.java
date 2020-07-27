@@ -1,24 +1,35 @@
 package com.mybatislearn.dao.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class Thing {
+    @ApiModelProperty("")
     private Integer id;
 
+    @ApiModelProperty("物品名")
     private String thingName;
 
+    @ApiModelProperty("物品状态（1、正常；2、待找寻；3、待补充；4、待遗弃；5、待维修；）")
     private String thingStatus;
 
+    @ApiModelProperty("物品价格")
     private Double thingMoney;
 
+    @ApiModelProperty("物品数量")
     private Integer thingNum;
 
+    @ApiModelProperty("管理者")
     private String master;
 
+    @ApiModelProperty("拥有者")
     private String owner;
 
+    @ApiModelProperty("修改时间")
     private Date modiTime;
 
+    @ApiModelProperty("创建者")
     private String creater;
 
     public Integer getId() {

@@ -33,4 +33,5 @@ public interface GenericService<Record, Id> {
     PageData<Record> findPage(PageWrap<Record> pageWrap);
 
     long count(Record record);
+
 }
