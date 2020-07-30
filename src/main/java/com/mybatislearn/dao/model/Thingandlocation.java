@@ -1,9 +1,10 @@
 package com.mybatislearn.dao.model;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.ToString;
 
 import java.util.Date;
-
+@ToString
 public class Thingandlocation {
     @ApiModelProperty("")
     private Integer id;

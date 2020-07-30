@@ -31,6 +31,8 @@ public class User2ServiceImpl implements GenericService<User2, String> {
         //使用uuid作为主键
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         user.setUserId (uuid);
+        System.out.println (user.toString ());
+        
         user2Mapper.insertSelective(user);
         return user.getUserId ();
     }

@@ -1,9 +1,11 @@
 package com.mybatislearn.dao.model;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.ToString;
 
 import java.util.Date;
 
+@ToString
 public class User2 {
     @ApiModelProperty("uuid字符串")
     private String userId;

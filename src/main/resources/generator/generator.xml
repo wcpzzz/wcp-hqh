@@ -20,8 +20,8 @@
 
 		<!--关闭注释、使用自定义的插件 -->
 		<commentGenerator type="com.mybatislearn.utils.mycommentgenerator.MyCommentGenerator">
-<!--			<property name="suppressDate" value="false"/>
-			<property name="suppressAllComments" value="true"/>-->
+			<property name="suppressDate" value="false"/>
+			<property name="suppressAllComments" value="true"/>
 		</commentGenerator>
 
 		<!--数据库连接信息 -->
@@ -48,8 +48,8 @@
 		<!--对应数据库表名 -->
 		<table tableName="${table.name}">
 			<!--新增记录返回自增主键-->
-			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
-<!--			<generatedKey column="user_id" sqlStatement="MySql" identity="false"/>-->
+<!--			<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+			<generatedKey column="user_id" sqlStatement="MySql" identity="false"/>
 		</table>
 
 	</context>
