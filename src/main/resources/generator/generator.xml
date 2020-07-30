@@ -49,7 +49,8 @@
 		<table tableName="${table.name}">
 			<!--新增记录返回自增主键-->
 <!--			<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-			<generatedKey column="user_id" sqlStatement="MySql" identity="false"/>
+<!--			<generatedKey column="user_id" sqlStatement="MySql" identity="false"/>
+            实测uuid写了就报错，啥也不写就行-->
 		</table>
 
 	</context>
