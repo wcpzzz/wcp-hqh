@@ -49,7 +49,7 @@
 //                .addPathPatterns(Arrays.asList("/user/online"
 //                        ))
 //                .excludePathPatterns("/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/*.html", "/**/*.html","/swagger-ui.html#!","/swagger-resources/**")
-//                .excludePathPatterns(Arrays.asList("/user/login"));//不拦截登录和其他
+//                .excludePathPatterns(Arrays.asList("/user/LoginService"));//不拦截登录和其他
 //    }
 //    @Bean
 //    public AuthInterceptor authInterceptor() {

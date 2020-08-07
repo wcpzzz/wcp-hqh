@@ -15,7 +15,7 @@ public class JwtInfo {
     }
 
     public void setUid(String uid) {
-        this.uid = uid;
+        this.uid = uid== null ? null : uid.trim();
     }
 
 /*    public String getUname() {

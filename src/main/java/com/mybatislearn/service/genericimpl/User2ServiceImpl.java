@@ -1,4 +1,4 @@
-package com.mybatislearn.service.impl;
+package com.mybatislearn.service.genericimpl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -32,7 +32,7 @@ public class User2ServiceImpl implements GenericService<User2, String> {
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         user.setUserId (uuid);
         System.out.println (user.toString ());
-        
+
         user2Mapper.insertSelective(user);
         return user.getUserId ();
     }

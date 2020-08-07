@@ -1,4 +1,4 @@
-package com.mybatislearn.service.impl;
+package com.mybatislearn.service.genericimpl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
