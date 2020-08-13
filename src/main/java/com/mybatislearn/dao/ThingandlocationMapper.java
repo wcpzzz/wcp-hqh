@@ -10,7 +10,7 @@ public interface ThingandlocationMapper {
 
     int deleteByExample(ThingandlocationExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Thingandlocation record);
 
@@ -18,7 +18,7 @@ public interface ThingandlocationMapper {
 
     List<Thingandlocation> selectByExample(ThingandlocationExample example);
 
-    Thingandlocation selectByPrimaryKey(Integer id);
+    Thingandlocation selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Thingandlocation record, @Param("example") ThingandlocationExample example);
 

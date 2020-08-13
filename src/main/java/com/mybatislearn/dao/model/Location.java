@@ -7,7 +7,7 @@ import java.util.Date;
 @ToString
 public class Location {
     @ApiModelProperty("")
-    private Integer id;
+    private String id;
 
     @ApiModelProperty("地点名称")
     private String locationName;
@@ -30,12 +30,12 @@ public class Location {
     @ApiModelProperty("管理者")
     private String master;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getLocationName() {

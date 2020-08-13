@@ -17,7 +17,8 @@ public class HttpInterceptor implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     /**
@@ -32,6 +33,9 @@ public class HttpInterceptor implements WebMvcConfigurer {
         // addPathPatterns("/test/*") 表示拦截/test/abc，拦截/test/aaa , 不拦截 /test/abc/def
         // addPathPatterns("/test/**").excludePathPatterns("/test/login", "/test/register") 表示拦截/test/ 下的所有路径请求，但不拦截 /test/login 和 /test/register
 //        registry.addInterceptor (loginInterceptor).addPathPatterns ("/**");
-        registry.addInterceptor (loginInterceptor).addPathPatterns("/**").excludePathPatterns("/user2/login", "/user2/register");
+        registry.addInterceptor (loginInterceptor).addPathPatterns("/**")
+                .excludePathPatterns("/user2/login", "/user2/register","/error","/","/favicon.ico")
+                //放行swagger
+                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**","/csrf");
     }
 }

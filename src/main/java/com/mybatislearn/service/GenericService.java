@@ -12,6 +12,7 @@ import java.util.List;
  * @author wcpzzz
  * @date 2020/07/06 10:09
  */
+
 public interface GenericService<Record, Id> {
 
     Id create(Record record);

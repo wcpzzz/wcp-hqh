@@ -10,7 +10,7 @@ public interface ThingMapper {
 
     int deleteByExample(ThingExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Thing record);
 
@@ -18,7 +18,7 @@ public interface ThingMapper {
 
     List<Thing> selectByExample(ThingExample example);
 
-    Thing selectByPrimaryKey(Integer id);
+    Thing selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Thing record, @Param("example") ThingExample example);
 

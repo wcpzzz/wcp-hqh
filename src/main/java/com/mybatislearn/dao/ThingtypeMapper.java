@@ -10,7 +10,7 @@ public interface ThingtypeMapper {
 
     int deleteByExample(ThingtypeExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Thingtype record);
 
@@ -18,7 +18,7 @@ public interface ThingtypeMapper {
 
     List<Thingtype> selectByExample(ThingtypeExample example);
 
-    Thingtype selectByPrimaryKey(Integer id);
+    Thingtype selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Thingtype record, @Param("example") ThingtypeExample example);
 

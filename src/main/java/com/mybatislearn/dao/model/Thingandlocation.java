@@ -7,13 +7,13 @@ import java.util.Date;
 @ToString
 public class Thingandlocation {
     @ApiModelProperty("")
-    private Integer id;
+    private String id;
 
     @ApiModelProperty("物品id")
-    private Integer thingId;
+    private String thingId;
 
     @ApiModelProperty("地点id")
-    private Integer locationId;
+    private String locationId;
 
     @ApiModelProperty("创建者")
     private String creater;
@@ -24,28 +24,28 @@ public class Thingandlocation {
     @ApiModelProperty("修改时间")
     private Date modiTime;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Integer getThingId() {
+    public String getThingId() {
         return thingId;
     }
 
-    public void setThingId(Integer thingId) {
-        this.thingId = thingId;
+    public void setThingId(String thingId) {
+        this.thingId = thingId == null ? null : thingId.trim();
     }
 
-    public Integer getLocationId() {
+    public String getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId == null ? null : locationId.trim();
     }
 
     public String getCreater() {

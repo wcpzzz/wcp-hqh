@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/thing")
 @Api(tags = "Thing 物品表")
-public class ThingController extends GenericController<Thing,Integer> {
+public class ThingController extends GenericController<Thing,String> {
 
 }

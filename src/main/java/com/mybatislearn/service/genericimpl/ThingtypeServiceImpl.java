@@ -21,26 +21,26 @@ import java.util.List;
  * @date 2020/07/06 10:09
  */
 @Service
-public class ThingtypeServiceImpl implements GenericService<Thingtype, Integer> {
+public class ThingtypeServiceImpl implements GenericService<Thingtype, String> {
 //    GenericService<Thingtype, Integer>前一个为对象，后一个为主键类型
     @Autowired
     private ThingtypeMapper thingtypeMapper;
 
     @Override
-    public Integer create(Thingtype thingtype) {
+    public String create(Thingtype thingtype) {
         thingtypeMapper.insertSelective(thingtype);
         return thingtype.getId();
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(String id) {
         thingtypeMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public void deleteByIdInBatch(List<Integer> ids) {
+    public void deleteByIdInBatch(List<String> ids) {
         if (CollectionUtils.isEmpty(ids)) return;
-        for (Integer id: ids) {
+        for (String id: ids) {
             this.deleteById(id);
         }
     }
@@ -59,7 +59,7 @@ public class ThingtypeServiceImpl implements GenericService<Thingtype, Integer> 
     }
 
     @Override
-    public Thingtype findById(Integer id) {
+    public Thingtype findById(String id) {
         return thingtypeMapper.selectByPrimaryKey(id);
     }
 

@@ -7,13 +7,13 @@ import java.util.Date;
 @ToString
 public class Thingandtype {
     @ApiModelProperty("")
-    private Integer id;
+    private String id;
 
     @ApiModelProperty("物品编号")
-    private Integer thingId;
+    private String thingId;
 
     @ApiModelProperty("物品种类编号")
-    private Integer thingtypeId;
+    private String thingtypeId;
 
     @ApiModelProperty("修改时间")
     private Date modiTime;
@@ -24,28 +24,28 @@ public class Thingandtype {
     @ApiModelProperty("管理者")
     private String master;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Integer getThingId() {
+    public String getThingId() {
         return thingId;
     }
 
-    public void setThingId(Integer thingId) {
-        this.thingId = thingId;
+    public void setThingId(String thingId) {
+        this.thingId = thingId == null ? null : thingId.trim();
     }
 
-    public Integer getThingtypeId() {
+    public String getThingtypeId() {
         return thingtypeId;
     }
 
-    public void setThingtypeId(Integer thingtypeId) {
-        this.thingtypeId = thingtypeId;
+    public void setThingtypeId(String thingtypeId) {
+        this.thingtypeId = thingtypeId == null ? null : thingtypeId.trim();
     }
 
     public Date getModiTime() {

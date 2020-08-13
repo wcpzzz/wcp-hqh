@@ -42,14 +42,34 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
         } else {
             token = requestWrapper.getParameter ("token");
         }
-        //这里进行token校验
+        //这里进行token校验，输出没有过的请求路径
         if (tokenUtil.verify (token)!=null) {
             request.setAttribute("userId",tokenUtil.verify (token));
             log.info ("tokenyes");
             return true;
         } else {
+/*            System.out.println (request.getRequestURL());
             log.info (tokenUtil.verify (token)+"tokenno");
+            throw new Exception ("莫得token");*/
+            System.out.println (token+"tokenqu");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            String url = "/industryiot/Login.html";
+//            response.sendRedirect(url);
+
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=utf-8");
+            JSONObject res = new JSONObject();
+            res.put("success","-1");
+            res.put("msg","去登陆吧");
+            PrintWriter out = null ;
+            out = response.getWriter();
+            out.write(res.toString());
+            out.flush();
+            out.close();
             return false;
+
+
+//            return false;
         }
     }
 }
