@@ -1,3 +1,4 @@
+/*
 package com.mybatislearn.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +13,24 @@ public class HttpInterceptor implements WebMvcConfigurer {
     @Autowired
     private HttpInterceptorUtil loginInterceptor;
 
-    /**
+    */
+/**
      * 这个方法是用来配置静态资源的，比如html，js，css，等等
-     */
+     *//*
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    /**
+    */
+/**
      * 这个方法用来注册拦截器，我们自己写好的拦截器需要通过这里添加注册才能生效
      *
      * @param registry
-     */
+     *//*
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns("/**") 表示拦截所有的请求，
@@ -39,3 +44,4 @@ public class HttpInterceptor implements WebMvcConfigurer {
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**","/csrf");
     }
 }
+*/

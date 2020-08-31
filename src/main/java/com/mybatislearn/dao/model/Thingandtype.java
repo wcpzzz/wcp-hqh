@@ -7,68 +7,68 @@ import java.util.Date;
 @ToString
 public class Thingandtype {
     @ApiModelProperty("")
-    private String id;
+    private String thingandtypeId;
 
     @ApiModelProperty("物品编号")
-    private String thingId;
+    private String thingandtypeThingId;
 
     @ApiModelProperty("物品种类编号")
-    private String thingtypeId;
+    private String thingandtypeThingtypeId;
 
     @ApiModelProperty("修改时间")
-    private Date modiTime;
+    private Date thingandtypeModiTime;
 
     @ApiModelProperty("创建者")
-    private String creater;
+    private String thingandtypeUserCreater;
 
     @ApiModelProperty("管理者")
-    private String master;
+    private String thingandtypeUserMaster;
 
-    public String getId() {
-        return id;
+    public String getThingandtypeId() {
+        return thingandtypeId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setThingandtypeId(String thingandtypeId) {
+        this.thingandtypeId = thingandtypeId == null ? null : thingandtypeId.trim();
     }
 
-    public String getThingId() {
-        return thingId;
+    public String getThingandtypeThingId() {
+        return thingandtypeThingId;
     }
 
-    public void setThingId(String thingId) {
-        this.thingId = thingId == null ? null : thingId.trim();
+    public void setThingandtypeThingId(String thingandtypeThingId) {
+        this.thingandtypeThingId = thingandtypeThingId == null ? null : thingandtypeThingId.trim();
     }
 
-    public String getThingtypeId() {
-        return thingtypeId;
+    public String getThingandtypeThingtypeId() {
+        return thingandtypeThingtypeId;
     }
 
-    public void setThingtypeId(String thingtypeId) {
-        this.thingtypeId = thingtypeId == null ? null : thingtypeId.trim();
+    public void setThingandtypeThingtypeId(String thingandtypeThingtypeId) {
+        this.thingandtypeThingtypeId = thingandtypeThingtypeId == null ? null : thingandtypeThingtypeId.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
+    public Date getThingandtypeModiTime() {
+        return thingandtypeModiTime;
     }
 
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
+    public void setThingandtypeModiTime(Date thingandtypeModiTime) {
+        this.thingandtypeModiTime = thingandtypeModiTime;
     }
 
-    public String getCreater() {
-        return creater;
+    public String getThingandtypeUserCreater() {
+        return thingandtypeUserCreater;
     }
 
-    public void setCreater(String creater) {
-        this.creater = creater == null ? null : creater.trim();
+    public void setThingandtypeUserCreater(String thingandtypeUserCreater) {
+        this.thingandtypeUserCreater = thingandtypeUserCreater == null ? null : thingandtypeUserCreater.trim();
     }
 
-    public String getMaster() {
-        return master;
+    public String getThingandtypeUserMaster() {
+        return thingandtypeUserMaster;
     }
 
-    public void setMaster(String master) {
-        this.master = master == null ? null : master.trim();
+    public void setThingandtypeUserMaster(String thingandtypeUserMaster) {
+        this.thingandtypeUserMaster = thingandtypeUserMaster == null ? null : thingandtypeUserMaster.trim();
     }
 }

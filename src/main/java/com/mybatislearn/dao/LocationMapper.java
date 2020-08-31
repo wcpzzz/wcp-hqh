@@ -10,7 +10,7 @@ public interface LocationMapper {
 
     int deleteByExample(LocationExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(String locationId);
 
     int insert(Location record);
 
@@ -18,7 +18,7 @@ public interface LocationMapper {
 
     List<Location> selectByExample(LocationExample example);
 
-    Location selectByPrimaryKey(String id);
+    Location selectByPrimaryKey(String locationId);
 
     int updateByExampleSelective(@Param("record") Location record, @Param("example") LocationExample example);
 

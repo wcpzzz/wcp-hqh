@@ -7,7 +7,7 @@ import java.util.Date;
 @ToString
 public class Thing {
     @ApiModelProperty("")
-    private String id;
+    private String thingId;
 
     @ApiModelProperty("物品名")
     private String thingName;
@@ -22,23 +22,23 @@ public class Thing {
     private Integer thingNum;
 
     @ApiModelProperty("管理者")
-    private String master;
+    private String thingUserMaster;
 
     @ApiModelProperty("拥有者")
-    private String owner;
+    private String thingUserOwner;
 
     @ApiModelProperty("修改时间")
-    private Date modiTime;
+    private Date thingModiTime;
 
     @ApiModelProperty("创建者")
-    private String creater;
+    private String thingUserCreater;
 
-    public String getId() {
-        return id;
+    public String getThingId() {
+        return thingId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setThingId(String thingId) {
+        this.thingId = thingId == null ? null : thingId.trim();
     }
 
     public String getThingName() {
@@ -73,35 +73,35 @@ public class Thing {
         this.thingNum = thingNum;
     }
 
-    public String getMaster() {
-        return master;
+    public String getThingUserMaster() {
+        return thingUserMaster;
     }
 
-    public void setMaster(String master) {
-        this.master = master == null ? null : master.trim();
+    public void setThingUserMaster(String thingUserMaster) {
+        this.thingUserMaster = thingUserMaster == null ? null : thingUserMaster.trim();
     }
 
-    public String getOwner() {
-        return owner;
+    public String getThingUserOwner() {
+        return thingUserOwner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner == null ? null : owner.trim();
+    public void setThingUserOwner(String thingUserOwner) {
+        this.thingUserOwner = thingUserOwner == null ? null : thingUserOwner.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
+    public Date getThingModiTime() {
+        return thingModiTime;
     }
 
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
+    public void setThingModiTime(Date thingModiTime) {
+        this.thingModiTime = thingModiTime;
     }
 
-    public String getCreater() {
-        return creater;
+    public String getThingUserCreater() {
+        return thingUserCreater;
     }
 
-    public void setCreater(String creater) {
-        this.creater = creater == null ? null : creater.trim();
+    public void setThingUserCreater(String thingUserCreater) {
+        this.thingUserCreater = thingUserCreater == null ? null : thingUserCreater.trim();
     }
 }

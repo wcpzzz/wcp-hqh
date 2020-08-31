@@ -29,7 +29,7 @@ public class ThingandlocationServiceImpl implements GenericService<Thingandlocat
     @Override
     public String create(Thingandlocation thingandlocation) {
         thingandlocationMapper.insertSelective(thingandlocation);
-        return thingandlocation.getId();
+        return thingandlocation.getThingandlocationId ();
     }
 
     @Override

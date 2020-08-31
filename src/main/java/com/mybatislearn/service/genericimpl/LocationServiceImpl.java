@@ -29,7 +29,7 @@ public class LocationServiceImpl implements GenericService<Location, String> {
     @Override
     public String create(Location location) {
         locationMapper.insertSelective(location);
-        return location.getId();
+        return location.getLocationId ();
     }
 
     @Override

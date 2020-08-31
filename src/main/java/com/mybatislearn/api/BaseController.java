@@ -23,7 +23,14 @@ public class BaseController {
      * 全局异常捕获
      */
     @ExceptionHandler(Exception.class)
-    public ModelAndView exceptionHandle(HttpServletRequest request, HttpServletResponse response, Exception ex){
+    public ApiResponse exceptionHandle(HttpServletRequest request, HttpServletResponse response, Exception ex){
+        return ApiResponse.failed ("请求挂了");
+    }
+
+
+
+
+/*    public ModelAndView exceptionHandle(HttpServletRequest request, HttpServletResponse response, Exception ex){
         try {
             log.error(ex.getMessage(), ex);
             // 如果为异步请求，返回ApiResponse对象
@@ -42,7 +49,7 @@ public class BaseController {
             model.addAttribute("error", "未知异常");
             return new ModelAndView("error/default", model);
         }
-    }
+    }*/
 
     /**
      * 判断请求是否为异步

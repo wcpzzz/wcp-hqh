@@ -2,18 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatislearn.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.User">
-    <id column="ID" jdbcType="INTEGER" property="id" />
-    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
-    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
-    <result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
-    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
-    <result column="BIRTHDAY" jdbcType="DATE" property="birthday" />
-    <result column="SEX" jdbcType="TINYINT" property="sex" />
-    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
-    <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
-    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_role" jdbcType="VARCHAR" property="userRole" />
+    <result column="user_master" jdbcType="VARCHAR" property="userMaster" />
+    <result column="user_slave" jdbcType="VARCHAR" property="userSlave" />
+    <result column="user_modi_time" jdbcType="TIMESTAMP" property="userModiTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -29,7 +25,7 @@
                   and ${criterion.condition} #{criterion.value}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition}#{criterion.value} and #{criterion.secondValue}
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
@@ -74,8 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, USERNAME, PASSWORD, NICKNAME, REAL_NAME, BIRTHDAY, SEX, EMAIL, MOBILE, CREATE_TIME,
-    UPDATE_TIME, IS_DELETE
+    user_id, user_name, user_mobile, user_email, user_role, user_master, user_slave, 
+    user_modi_time
   </sql>
   <select id="selectByExample" parameterType="com.mybatislearn.dao.model.UserExample" resultMap="BaseResultMap">
     select
@@ -91,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
     <include refid="Base_Column_List" />
     from user
-    where ID = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
-    where ID = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.UserExample">
     delete from user
@@ -107,96 +103,70 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mybatislearn.dao.model.UserExample">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into user (USERNAME, PASSWORD, NICKNAME,
-    REAL_NAME, BIRTHDAY, SEX,
-    EMAIL, MOBILE, CREATE_TIME,
-    UPDATE_TIME, IS_DELETE)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
-    #{realName,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{sex,jdbcType=TINYINT},
-    #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
-    #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT})
+  <insert id="insert" parameterType="com.mybatislearn.dao.model.User">
+    insert into user (user_id, user_name, user_mobile, 
+      user_email, user_role, user_master, 
+      user_slave, user_modi_time)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userRole,jdbcType=VARCHAR}, #{userMaster,jdbcType=VARCHAR}, 
+      #{userSlave,jdbcType=VARCHAR}, #{userModiTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.UserExample">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
+  <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        USERNAME,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="password != null">
-        PASSWORD,
+      <if test="userName != null">
+        user_name,
       </if>
-      <if test="nickname != null">
-        NICKNAME,
+      <if test="userMobile != null">
+        user_mobile,
       </if>
-      <if test="realName != null">
-        REAL_NAME,
+      <if test="userEmail != null">
+        user_email,
       </if>
-      <if test="birthday != null">
-        BIRTHDAY,
+      <if test="userRole != null">
+        user_role,
       </if>
-      <if test="sex != null">
-        SEX,
+      <if test="userMaster != null">
+        user_master,
       </if>
-      <if test="email != null">
-        EMAIL,
+      <if test="userSlave != null">
+        user_slave,
       </if>
-      <if test="mobile != null">
-        MOBILE,
-      </if>
-      <if test="createTime != null">
-        CREATE_TIME,
-      </if>
-      <if test="updateTime != null">
-        UPDATE_TIME,
-      </if>
-      <if test="isDelete != null">
-        IS_DELETE,
+      <if test="userModiTime != null">
+        user_modi_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
+      <if test="userMobile != null">
+        #{userMobile,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null">
-        #{realName,jdbcType=VARCHAR},
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=DATE},
+      <if test="userRole != null">
+        #{userRole,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        #{sex,jdbcType=TINYINT},
+      <if test="userMaster != null">
+        #{userMaster,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+      <if test="userSlave != null">
+        #{userSlave,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=BIT},
+      <if test="userModiTime != null">
+        #{userModiTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mybatislearn.dao.model.UserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.mybatislearn.dao.model.UserExample" resultType="java.lang.Long">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -205,41 +175,29 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
-      <if test="record.id != null">
-        ID = #{record.id,jdbcType=INTEGER},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.username != null">
-        USERNAME = #{record.username,jdbcType=VARCHAR},
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      <if test="record.userMobile != null">
+        user_mobile = #{record.userMobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.nickname != null">
-        NICKNAME = #{record.nickname,jdbcType=VARCHAR},
+      <if test="record.userEmail != null">
+        user_email = #{record.userEmail,jdbcType=VARCHAR},
       </if>
-      <if test="record.realName != null">
-        REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+      <if test="record.userRole != null">
+        user_role = #{record.userRole,jdbcType=VARCHAR},
       </if>
-      <if test="record.birthday != null">
-        BIRTHDAY = #{record.birthday,jdbcType=DATE},
+      <if test="record.userMaster != null">
+        user_master = #{record.userMaster,jdbcType=VARCHAR},
       </if>
-      <if test="record.sex != null">
-        SEX = #{record.sex,jdbcType=TINYINT},
+      <if test="record.userSlave != null">
+        user_slave = #{record.userSlave,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null">
-        EMAIL = #{record.email,jdbcType=VARCHAR},
-      </if>
-      <if test="record.mobile != null">
-        MOBILE = #{record.mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
-        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updateTime != null">
-        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.isDelete != null">
-        IS_DELETE = #{record.isDelete,jdbcType=BIT},
+      <if test="record.userModiTime != null">
+        user_modi_time = #{record.userModiTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -248,74 +206,54 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user
-    set ID = #{record.id,jdbcType=INTEGER},
-    USERNAME = #{record.username,jdbcType=VARCHAR},
-    PASSWORD = #{record.password,jdbcType=VARCHAR},
-    NICKNAME = #{record.nickname,jdbcType=VARCHAR},
-    REAL_NAME = #{record.realName,jdbcType=VARCHAR},
-    BIRTHDAY = #{record.birthday,jdbcType=DATE},
-    SEX = #{record.sex,jdbcType=TINYINT},
-    EMAIL = #{record.email,jdbcType=VARCHAR},
-    MOBILE = #{record.mobile,jdbcType=VARCHAR},
-    CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
-    UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-    IS_DELETE = #{record.isDelete,jdbcType=BIT}
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      user_mobile = #{record.userMobile,jdbcType=VARCHAR},
+      user_email = #{record.userEmail,jdbcType=VARCHAR},
+      user_role = #{record.userRole,jdbcType=VARCHAR},
+      user_master = #{record.userMaster,jdbcType=VARCHAR},
+      user_slave = #{record.userSlave,jdbcType=VARCHAR},
+      user_modi_time = #{record.userModiTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.UserExample">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.User">
     update user
     <set>
-      <if test="username != null">
-        USERNAME = #{username,jdbcType=VARCHAR},
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        PASSWORD = #{password,jdbcType=VARCHAR},
+      <if test="userMobile != null">
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null">
-        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null">
-        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      <if test="userRole != null">
+        user_role = #{userRole,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        BIRTHDAY = #{birthday,jdbcType=DATE},
+      <if test="userMaster != null">
+        user_master = #{userMaster,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        SEX = #{sex,jdbcType=TINYINT},
+      <if test="userSlave != null">
+        user_slave = #{userSlave,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        EMAIL = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null">
-        MOBILE = #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        IS_DELETE = #{isDelete,jdbcType=BIT},
+      <if test="userModiTime != null">
+        user_modi_time = #{userModiTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.UserExample">
+  <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.User">
     update user
-    set USERNAME = #{username,jdbcType=VARCHAR},
-      PASSWORD = #{password,jdbcType=VARCHAR},
-      NICKNAME = #{nickname,jdbcType=VARCHAR},
-      REAL_NAME = #{realName,jdbcType=VARCHAR},
-      BIRTHDAY = #{birthday,jdbcType=DATE},
-      SEX = #{sex,jdbcType=TINYINT},
-      EMAIL = #{email,jdbcType=VARCHAR},
-      MOBILE = #{mobile,jdbcType=VARCHAR},
-      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      IS_DELETE = #{isDelete,jdbcType=BIT}
-    where ID = #{id,jdbcType=INTEGER}
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_mobile = #{userMobile,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_role = #{userRole,jdbcType=VARCHAR},
+      user_master = #{userMaster,jdbcType=VARCHAR},
+      user_slave = #{userSlave,jdbcType=VARCHAR},
+      user_modi_time = #{userModiTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

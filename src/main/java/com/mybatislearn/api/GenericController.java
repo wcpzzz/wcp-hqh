@@ -2,6 +2,7 @@ package com.mybatislearn.api;
 
 import com.mybatislearn.core.model.ApiResponse;
 import com.mybatislearn.core.model.PageWrap;
+import com.mybatislearn.interceptor.RequestHolder;
 import com.mybatislearn.service.GenericService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public abstract class GenericController<Record, Id> extends BaseController {
     }
     @PostMapping("/findList")
     @ApiOperation("根据类查询列表")
-    public ApiResponse<Record> findOList(@RequestBody Record req) {
+    public ApiResponse<Record> findList(@RequestBody Record req) {
         return ApiResponse.success(genericService.findList(req));
     }
     @PostMapping("/page")

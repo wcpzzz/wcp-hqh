@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatislearn.dao.ThingandtypeMapper">
   <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.Thingandtype">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="thing_id" jdbcType="VARCHAR" property="thingId" />
-    <result column="thingtype_id" jdbcType="VARCHAR" property="thingtypeId" />
-    <result column="modi_time" jdbcType="TIMESTAMP" property="modiTime" />
-    <result column="creater" jdbcType="VARCHAR" property="creater" />
-    <result column="master" jdbcType="VARCHAR" property="master" />
+    <id column="thingandtype_id" jdbcType="VARCHAR" property="thingandtypeId" />
+    <result column="thingandtype_thing_id" jdbcType="VARCHAR" property="thingandtypeThingId" />
+    <result column="thingandtype_thingtype_id" jdbcType="VARCHAR" property="thingandtypeThingtypeId" />
+    <result column="thingandtype_modi_time" jdbcType="TIMESTAMP" property="thingandtypeModiTime" />
+    <result column="thingandtype_user_creater" jdbcType="VARCHAR" property="thingandtypeUserCreater" />
+    <result column="thingandtype_user_master" jdbcType="VARCHAR" property="thingandtypeUserMaster" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, thing_id, thingtype_id, modi_time, creater, master
+    thingandtype_id, thingandtype_thing_id, thingandtype_thingtype_id, thingandtype_modi_time, 
+    thingandtype_user_creater, thingandtype_user_master
   </sql>
   <select id="selectByExample" parameterType="com.mybatislearn.dao.model.ThingandtypeExample" resultMap="BaseResultMap">
     select
@@ -88,11 +89,11 @@
     select 
     <include refid="Base_Column_List" />
     from thingandtype
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandtype_id = #{thingandtypeId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from thingandtype
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandtype_id = #{thingandtypeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.ThingandtypeExample">
     delete from thingandtype
@@ -101,53 +102,55 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mybatislearn.dao.model.Thingandtype">
-    insert into thingandtype (id, thing_id, thingtype_id, 
-      modi_time, creater, master
+    insert into thingandtype (thingandtype_id, thingandtype_thing_id, 
+      thingandtype_thingtype_id, thingandtype_modi_time, 
+      thingandtype_user_creater, thingandtype_user_master
       )
-    values (#{id,jdbcType=VARCHAR}, #{thingId,jdbcType=VARCHAR}, #{thingtypeId,jdbcType=VARCHAR}, 
-      #{modiTime,jdbcType=TIMESTAMP}, #{creater,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}
+    values (#{thingandtypeId,jdbcType=VARCHAR}, #{thingandtypeThingId,jdbcType=VARCHAR}, 
+      #{thingandtypeThingtypeId,jdbcType=VARCHAR}, #{thingandtypeModiTime,jdbcType=TIMESTAMP}, 
+      #{thingandtypeUserCreater,jdbcType=VARCHAR}, #{thingandtypeUserMaster,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.Thingandtype">
     insert into thingandtype
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="thingandtypeId != null">
+        thingandtype_id,
       </if>
-      <if test="thingId != null">
-        thing_id,
+      <if test="thingandtypeThingId != null">
+        thingandtype_thing_id,
       </if>
-      <if test="thingtypeId != null">
-        thingtype_id,
+      <if test="thingandtypeThingtypeId != null">
+        thingandtype_thingtype_id,
       </if>
-      <if test="modiTime != null">
-        modi_time,
+      <if test="thingandtypeModiTime != null">
+        thingandtype_modi_time,
       </if>
-      <if test="creater != null">
-        creater,
+      <if test="thingandtypeUserCreater != null">
+        thingandtype_user_creater,
       </if>
-      <if test="master != null">
-        master,
+      <if test="thingandtypeUserMaster != null">
+        thingandtype_user_master,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+      <if test="thingandtypeId != null">
+        #{thingandtypeId,jdbcType=VARCHAR},
       </if>
-      <if test="thingId != null">
-        #{thingId,jdbcType=VARCHAR},
+      <if test="thingandtypeThingId != null">
+        #{thingandtypeThingId,jdbcType=VARCHAR},
       </if>
-      <if test="thingtypeId != null">
-        #{thingtypeId,jdbcType=VARCHAR},
+      <if test="thingandtypeThingtypeId != null">
+        #{thingandtypeThingtypeId,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        #{modiTime,jdbcType=TIMESTAMP},
+      <if test="thingandtypeModiTime != null">
+        #{thingandtypeModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
-        #{creater,jdbcType=VARCHAR},
+      <if test="thingandtypeUserCreater != null">
+        #{thingandtypeUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        #{master,jdbcType=VARCHAR},
+      <if test="thingandtypeUserMaster != null">
+        #{thingandtypeUserMaster,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -160,23 +163,23 @@
   <update id="updateByExampleSelective" parameterType="map">
     update thingandtype
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=VARCHAR},
+      <if test="record.thingandtypeId != null">
+        thingandtype_id = #{record.thingandtypeId,jdbcType=VARCHAR},
       </if>
-      <if test="record.thingId != null">
-        thing_id = #{record.thingId,jdbcType=VARCHAR},
+      <if test="record.thingandtypeThingId != null">
+        thingandtype_thing_id = #{record.thingandtypeThingId,jdbcType=VARCHAR},
       </if>
-      <if test="record.thingtypeId != null">
-        thingtype_id = #{record.thingtypeId,jdbcType=VARCHAR},
+      <if test="record.thingandtypeThingtypeId != null">
+        thingandtype_thingtype_id = #{record.thingandtypeThingtypeId,jdbcType=VARCHAR},
       </if>
-      <if test="record.modiTime != null">
-        modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
+      <if test="record.thingandtypeModiTime != null">
+        thingandtype_modi_time = #{record.thingandtypeModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.creater != null">
-        creater = #{record.creater,jdbcType=VARCHAR},
+      <if test="record.thingandtypeUserCreater != null">
+        thingandtype_user_creater = #{record.thingandtypeUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="record.master != null">
-        master = #{record.master,jdbcType=VARCHAR},
+      <if test="record.thingandtypeUserMaster != null">
+        thingandtype_user_master = #{record.thingandtypeUserMaster,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,12 +188,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update thingandtype
-    set id = #{record.id,jdbcType=VARCHAR},
-      thing_id = #{record.thingId,jdbcType=VARCHAR},
-      thingtype_id = #{record.thingtypeId,jdbcType=VARCHAR},
-      modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
-      creater = #{record.creater,jdbcType=VARCHAR},
-      master = #{record.master,jdbcType=VARCHAR}
+    set thingandtype_id = #{record.thingandtypeId,jdbcType=VARCHAR},
+      thingandtype_thing_id = #{record.thingandtypeThingId,jdbcType=VARCHAR},
+      thingandtype_thingtype_id = #{record.thingandtypeThingtypeId,jdbcType=VARCHAR},
+      thingandtype_modi_time = #{record.thingandtypeModiTime,jdbcType=TIMESTAMP},
+      thingandtype_user_creater = #{record.thingandtypeUserCreater,jdbcType=VARCHAR},
+      thingandtype_user_master = #{record.thingandtypeUserMaster,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,31 +201,31 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.Thingandtype">
     update thingandtype
     <set>
-      <if test="thingId != null">
-        thing_id = #{thingId,jdbcType=VARCHAR},
+      <if test="thingandtypeThingId != null">
+        thingandtype_thing_id = #{thingandtypeThingId,jdbcType=VARCHAR},
       </if>
-      <if test="thingtypeId != null">
-        thingtype_id = #{thingtypeId,jdbcType=VARCHAR},
+      <if test="thingandtypeThingtypeId != null">
+        thingandtype_thingtype_id = #{thingandtypeThingtypeId,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        modi_time = #{modiTime,jdbcType=TIMESTAMP},
+      <if test="thingandtypeModiTime != null">
+        thingandtype_modi_time = #{thingandtypeModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
-        creater = #{creater,jdbcType=VARCHAR},
+      <if test="thingandtypeUserCreater != null">
+        thingandtype_user_creater = #{thingandtypeUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        master = #{master,jdbcType=VARCHAR},
+      <if test="thingandtypeUserMaster != null">
+        thingandtype_user_master = #{thingandtypeUserMaster,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandtype_id = #{thingandtypeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.Thingandtype">
     update thingandtype
-    set thing_id = #{thingId,jdbcType=VARCHAR},
-      thingtype_id = #{thingtypeId,jdbcType=VARCHAR},
-      modi_time = #{modiTime,jdbcType=TIMESTAMP},
-      creater = #{creater,jdbcType=VARCHAR},
-      master = #{master,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+    set thingandtype_thing_id = #{thingandtypeThingId,jdbcType=VARCHAR},
+      thingandtype_thingtype_id = #{thingandtypeThingtypeId,jdbcType=VARCHAR},
+      thingandtype_modi_time = #{thingandtypeModiTime,jdbcType=TIMESTAMP},
+      thingandtype_user_creater = #{thingandtypeUserCreater,jdbcType=VARCHAR},
+      thingandtype_user_master = #{thingandtypeUserMaster,jdbcType=VARCHAR}
+    where thingandtype_id = #{thingandtypeId,jdbcType=VARCHAR}
   </update>
 </mapper>

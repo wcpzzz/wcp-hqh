@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.mybatislearn.dao.model.User2;
+import com.mybatislearn.dao.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -15,12 +15,13 @@ public class TokenUtil {
     private static final String TOKEN_SECRET="token123";  //密钥盐
 
 
-    /**
+/**
      * 签名生成
-     * @param User2
+     * @param User
      * @return
      */
-    public static String sign(User2 user2){
+
+    public static String sign(User user){
 
         String token = null;
         try {
@@ -28,7 +29,7 @@ public class TokenUtil {
             token = JWT.create()
                     .withIssuer("auth0")
 //                    .withClaim("username", user2.getUserName ())
-                    .withClaim("userId", user2.getUserId ())
+                    .withClaim("userId", user.getUserId ())
                     .withExpiresAt(expiresAt)
                     // 使用了HMAC256加密算法。
                     .sign(Algorithm.HMAC256(TOKEN_SECRET));
@@ -40,11 +41,12 @@ public class TokenUtil {
     }
 
 
-    /**
+/**
      * 签名验证
      * @param token
-     * @return
-     */
+     * @return*/
+
+
     public static String verify(String token){
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();

@@ -7,68 +7,68 @@ import java.util.Date;
 @ToString
 public class Thingandlocation {
     @ApiModelProperty("")
-    private String id;
+    private String thingandlocationId;
 
     @ApiModelProperty("物品id")
-    private String thingId;
+    private String thingandlocationThingId;
 
     @ApiModelProperty("地点id")
-    private String locationId;
+    private String thingandlocationLocationId;
 
     @ApiModelProperty("创建者")
-    private String creater;
+    private String thingandlocationUserCreater;
 
     @ApiModelProperty("管理者")
-    private String master;
+    private String thingandlocationUserMaster;
 
     @ApiModelProperty("修改时间")
-    private Date modiTime;
+    private Date thingandlocationModiTime;
 
-    public String getId() {
-        return id;
+    public String getThingandlocationId() {
+        return thingandlocationId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setThingandlocationId(String thingandlocationId) {
+        this.thingandlocationId = thingandlocationId == null ? null : thingandlocationId.trim();
     }
 
-    public String getThingId() {
-        return thingId;
+    public String getThingandlocationThingId() {
+        return thingandlocationThingId;
     }
 
-    public void setThingId(String thingId) {
-        this.thingId = thingId == null ? null : thingId.trim();
+    public void setThingandlocationThingId(String thingandlocationThingId) {
+        this.thingandlocationThingId = thingandlocationThingId == null ? null : thingandlocationThingId.trim();
     }
 
-    public String getLocationId() {
-        return locationId;
+    public String getThingandlocationLocationId() {
+        return thingandlocationLocationId;
     }
 
-    public void setLocationId(String locationId) {
-        this.locationId = locationId == null ? null : locationId.trim();
+    public void setThingandlocationLocationId(String thingandlocationLocationId) {
+        this.thingandlocationLocationId = thingandlocationLocationId == null ? null : thingandlocationLocationId.trim();
     }
 
-    public String getCreater() {
-        return creater;
+    public String getThingandlocationUserCreater() {
+        return thingandlocationUserCreater;
     }
 
-    public void setCreater(String creater) {
-        this.creater = creater == null ? null : creater.trim();
+    public void setThingandlocationUserCreater(String thingandlocationUserCreater) {
+        this.thingandlocationUserCreater = thingandlocationUserCreater == null ? null : thingandlocationUserCreater.trim();
     }
 
-    public String getMaster() {
-        return master;
+    public String getThingandlocationUserMaster() {
+        return thingandlocationUserMaster;
     }
 
-    public void setMaster(String master) {
-        this.master = master == null ? null : master.trim();
+    public void setThingandlocationUserMaster(String thingandlocationUserMaster) {
+        this.thingandlocationUserMaster = thingandlocationUserMaster == null ? null : thingandlocationUserMaster.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
+    public Date getThingandlocationModiTime() {
+        return thingandlocationModiTime;
     }
 
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
+    public void setThingandlocationModiTime(Date thingandlocationModiTime) {
+        this.thingandlocationModiTime = thingandlocationModiTime;
     }
 }

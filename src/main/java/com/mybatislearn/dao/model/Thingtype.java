@@ -7,26 +7,26 @@ import java.util.Date;
 @ToString
 public class Thingtype {
     @ApiModelProperty("")
-    private String id;
+    private String thingtypeId;
 
     @ApiModelProperty("类型名称")
     private String thingtypeName;
 
     @ApiModelProperty("修改时间")
-    private Date modiTime;
+    private Date thingtypeModiTime;
 
     @ApiModelProperty("创建者")
-    private String creater;
+    private String thingtypeUserCreater;
 
     @ApiModelProperty("管理员")
-    private String master;
+    private String thingtypeUserMaster;
 
-    public String getId() {
-        return id;
+    public String getThingtypeId() {
+        return thingtypeId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setThingtypeId(String thingtypeId) {
+        this.thingtypeId = thingtypeId == null ? null : thingtypeId.trim();
     }
 
     public String getThingtypeName() {
@@ -37,27 +37,27 @@ public class Thingtype {
         this.thingtypeName = thingtypeName == null ? null : thingtypeName.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
+    public Date getThingtypeModiTime() {
+        return thingtypeModiTime;
     }
 
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
+    public void setThingtypeModiTime(Date thingtypeModiTime) {
+        this.thingtypeModiTime = thingtypeModiTime;
     }
 
-    public String getCreater() {
-        return creater;
+    public String getThingtypeUserCreater() {
+        return thingtypeUserCreater;
     }
 
-    public void setCreater(String creater) {
-        this.creater = creater == null ? null : creater.trim();
+    public void setThingtypeUserCreater(String thingtypeUserCreater) {
+        this.thingtypeUserCreater = thingtypeUserCreater == null ? null : thingtypeUserCreater.trim();
     }
 
-    public String getMaster() {
-        return master;
+    public String getThingtypeUserMaster() {
+        return thingtypeUserMaster;
     }
 
-    public void setMaster(String master) {
-        this.master = master == null ? null : master.trim();
+    public void setThingtypeUserMaster(String thingtypeUserMaster) {
+        this.thingtypeUserMaster = thingtypeUserMaster == null ? null : thingtypeUserMaster.trim();
     }
 }

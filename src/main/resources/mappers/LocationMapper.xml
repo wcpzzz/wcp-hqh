@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatislearn.dao.LocationMapper">
   <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.Location">
-    <id column="id" jdbcType="VARCHAR" property="id" />
+    <id column="location_id" jdbcType="VARCHAR" property="locationId" />
     <result column="location_name" jdbcType="VARCHAR" property="locationName" />
     <result column="location_memo" jdbcType="VARCHAR" property="locationMemo" />
     <result column="location_master" jdbcType="VARCHAR" property="locationMaster" />
     <result column="location_slave" jdbcType="VARCHAR" property="locationSlave" />
-    <result column="modi_time" jdbcType="TIMESTAMP" property="modiTime" />
-    <result column="creater" jdbcType="VARCHAR" property="creater" />
-    <result column="master" jdbcType="VARCHAR" property="master" />
+    <result column="location_modi_time" jdbcType="TIMESTAMP" property="locationModiTime" />
+    <result column="location_user_creater" jdbcType="VARCHAR" property="locationUserCreater" />
+    <result column="location_user_master" jdbcType="VARCHAR" property="locationUserMaster" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,8 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, location_name, location_memo, location_master, location_slave, modi_time, creater, 
-    master
+    location_id, location_name, location_memo, location_master, location_slave, location_modi_time, 
+    location_user_creater, location_user_master
   </sql>
   <select id="selectByExample" parameterType="com.mybatislearn.dao.model.LocationExample" resultMap="BaseResultMap">
     select
@@ -91,11 +91,11 @@
     select 
     <include refid="Base_Column_List" />
     from location
-    where id = #{id,jdbcType=VARCHAR}
+    where location_id = #{locationId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from location
-    where id = #{id,jdbcType=VARCHAR}
+    where location_id = #{locationId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.LocationExample">
     delete from location
@@ -104,18 +104,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mybatislearn.dao.model.Location">
-    insert into location (id, location_name, location_memo, 
-      location_master, location_slave, modi_time, 
-      creater, master)
-    values (#{id,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{locationMemo,jdbcType=VARCHAR}, 
-      #{locationMaster,jdbcType=VARCHAR}, #{locationSlave,jdbcType=VARCHAR}, #{modiTime,jdbcType=TIMESTAMP}, 
-      #{creater,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR})
+    insert into location (location_id, location_name, location_memo, 
+      location_master, location_slave, location_modi_time, 
+      location_user_creater, location_user_master
+      )
+    values (#{locationId,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{locationMemo,jdbcType=VARCHAR}, 
+      #{locationMaster,jdbcType=VARCHAR}, #{locationSlave,jdbcType=VARCHAR}, #{locationModiTime,jdbcType=TIMESTAMP}, 
+      #{locationUserCreater,jdbcType=VARCHAR}, #{locationUserMaster,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.Location">
     insert into location
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="locationId != null">
+        location_id,
       </if>
       <if test="locationName != null">
         location_name,
@@ -129,19 +131,19 @@
       <if test="locationSlave != null">
         location_slave,
       </if>
-      <if test="modiTime != null">
-        modi_time,
+      <if test="locationModiTime != null">
+        location_modi_time,
       </if>
-      <if test="creater != null">
-        creater,
+      <if test="locationUserCreater != null">
+        location_user_creater,
       </if>
-      <if test="master != null">
-        master,
+      <if test="locationUserMaster != null">
+        location_user_master,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+      <if test="locationId != null">
+        #{locationId,jdbcType=VARCHAR},
       </if>
       <if test="locationName != null">
         #{locationName,jdbcType=VARCHAR},
@@ -155,14 +157,14 @@
       <if test="locationSlave != null">
         #{locationSlave,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        #{modiTime,jdbcType=TIMESTAMP},
+      <if test="locationModiTime != null">
+        #{locationModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
-        #{creater,jdbcType=VARCHAR},
+      <if test="locationUserCreater != null">
+        #{locationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        #{master,jdbcType=VARCHAR},
+      <if test="locationUserMaster != null">
+        #{locationUserMaster,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -175,8 +177,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update location
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=VARCHAR},
+      <if test="record.locationId != null">
+        location_id = #{record.locationId,jdbcType=VARCHAR},
       </if>
       <if test="record.locationName != null">
         location_name = #{record.locationName,jdbcType=VARCHAR},
@@ -190,14 +192,14 @@
       <if test="record.locationSlave != null">
         location_slave = #{record.locationSlave,jdbcType=VARCHAR},
       </if>
-      <if test="record.modiTime != null">
-        modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
+      <if test="record.locationModiTime != null">
+        location_modi_time = #{record.locationModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.creater != null">
-        creater = #{record.creater,jdbcType=VARCHAR},
+      <if test="record.locationUserCreater != null">
+        location_user_creater = #{record.locationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="record.master != null">
-        master = #{record.master,jdbcType=VARCHAR},
+      <if test="record.locationUserMaster != null">
+        location_user_master = #{record.locationUserMaster,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -206,14 +208,14 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update location
-    set id = #{record.id,jdbcType=VARCHAR},
+    set location_id = #{record.locationId,jdbcType=VARCHAR},
       location_name = #{record.locationName,jdbcType=VARCHAR},
       location_memo = #{record.locationMemo,jdbcType=VARCHAR},
       location_master = #{record.locationMaster,jdbcType=VARCHAR},
       location_slave = #{record.locationSlave,jdbcType=VARCHAR},
-      modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
-      creater = #{record.creater,jdbcType=VARCHAR},
-      master = #{record.master,jdbcType=VARCHAR}
+      location_modi_time = #{record.locationModiTime,jdbcType=TIMESTAMP},
+      location_user_creater = #{record.locationUserCreater,jdbcType=VARCHAR},
+      location_user_master = #{record.locationUserMaster,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,17 +235,17 @@
       <if test="locationSlave != null">
         location_slave = #{locationSlave,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        modi_time = #{modiTime,jdbcType=TIMESTAMP},
+      <if test="locationModiTime != null">
+        location_modi_time = #{locationModiTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="creater != null">
-        creater = #{creater,jdbcType=VARCHAR},
+      <if test="locationUserCreater != null">
+        location_user_creater = #{locationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        master = #{master,jdbcType=VARCHAR},
+      <if test="locationUserMaster != null">
+        location_user_master = #{locationUserMaster,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where location_id = #{locationId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.Location">
     update location
@@ -251,9 +253,9 @@
       location_memo = #{locationMemo,jdbcType=VARCHAR},
       location_master = #{locationMaster,jdbcType=VARCHAR},
       location_slave = #{locationSlave,jdbcType=VARCHAR},
-      modi_time = #{modiTime,jdbcType=TIMESTAMP},
-      creater = #{creater,jdbcType=VARCHAR},
-      master = #{master,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+      location_modi_time = #{locationModiTime,jdbcType=TIMESTAMP},
+      location_user_creater = #{locationUserCreater,jdbcType=VARCHAR},
+      location_user_master = #{locationUserMaster,jdbcType=VARCHAR}
+    where location_id = #{locationId,jdbcType=VARCHAR}
   </update>
 </mapper>

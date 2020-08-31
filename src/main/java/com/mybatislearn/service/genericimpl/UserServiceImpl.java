@@ -1,46 +1,52 @@
-/*
 package com.mybatislearn.service.genericimpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mybatislearn.core.model.PageData;
 import com.mybatislearn.core.model.PageWrap;
 import com.mybatislearn.core.utils.ExampleBuilder;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.mybatislearn.dao.UserMapper;
+import com.mybatislearn.dao.model.User;
+import com.mybatislearn.dao.model.UserExample;
 import com.mybatislearn.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
+import java.util.UUID;
 import java.util.List;
 
-*/
 /**
  * 示例Service实现
  * @author wcpzzz
- * @date 2020/07/06 10:09
- *//*
+ * @date 2020/07/06 10:09*/
+
 
 @Service
-public class UserServiceImplDemo implements GenericService<User, Integer> {
-//    GenericService<User, Integer>前一个为对象，后一个为主键类型
+public class UserServiceImpl implements GenericService<User, String> {
+
     @Autowired
     private UserMapper userMapper;
 
     @Override
-    public Integer create(User user) {
+    public String create(User user) {
+        //使用uuid作为主键
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        user.setUserId (uuid);
+        System.out.println (user.toString ());
+
         userMapper.insertSelective(user);
-        return user.getId();
+        return user.getUserId ();
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(String id) {
         userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public void deleteByIdInBatch(List<Integer> ids) {
+    public void deleteByIdInBatch(List<String> ids) {
         if (CollectionUtils.isEmpty(ids)) return;
-        for (Integer id: ids) {
+        for (String id: ids) {
             this.deleteById(id);
         }
     }
@@ -59,13 +65,14 @@ public class UserServiceImplDemo implements GenericService<User, Integer> {
     }
 
     @Override
-    public User findById(Integer id) {
+    public User findById(String id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public User findOne(User user) {
         ExampleBuilder<UserExample, UserExample.Criteria> builder = ExampleBuilder.create(UserExample.class, UserExample.Criteria.class);
+//        就是打包一下
         List<User> users = userMapper.selectByExample(builder.buildExamplePack(user).getExample());
         if (users.size() > 0) {
             return users.get(0);
@@ -94,4 +101,3 @@ public class UserServiceImplDemo implements GenericService<User, Integer> {
         return userMapper.countByExample(builder.buildExamplePack(user).getExample());
     }
 }
-*/

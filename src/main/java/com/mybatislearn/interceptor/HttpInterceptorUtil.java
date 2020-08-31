@@ -1,3 +1,4 @@
+/*
 package com.mybatislearn.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
@@ -22,18 +23,22 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
 
     @Autowired
     private TokenUtil tokenUtil;
+*/
+/*    @Autowired
+    private RequestHolder requestHolder;*//*
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         BodyReaderHttpServletRequestWrapper requestWrapper = new BodyReaderHttpServletRequestWrapper (request);
         String contentType = request.getHeader (CONTENT_TYPE);
         String token;
-
-        /**
+        JSONObject requestJson = JSONObject.parseObject (requestWrapper.getBodyString (request));
+        */
+/**
          * 检查是请求头content-type ，取得token
-         */
+         *//*
+
         if (!ObjectUtils.isEmpty (contentType) && contentType.contains (APPLICATION_JSON)) {
-            JSONObject requestJson = JSONObject.parseObject (requestWrapper.getBodyString (request));
             if (requestJson.containsKey ("Sign")) {
                 return true;
             } else {
@@ -44,18 +49,11 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
         }
         //这里进行token校验，输出没有过的请求路径
         if (tokenUtil.verify (token)!=null) {
-            request.setAttribute("userId",tokenUtil.verify (token));
-            log.info ("tokenyes");
+//            requestJson.put("creater",tokenUtil.verify (token));
+            RequestHolder.add (tokenUtil.verify (token));
             return true;
         } else {
-/*            System.out.println (request.getRequestURL());
-            log.info (tokenUtil.verify (token)+"tokenno");
-            throw new Exception ("莫得token");*/
-            System.out.println (token+"tokenqu");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//            String url = "/industryiot/Login.html";
-//            response.sendRedirect(url);
-
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
             JSONObject res = new JSONObject();
@@ -67,9 +65,7 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
             out.flush();
             out.close();
             return false;
-
-
-//            return false;
         }
     }
 }
+*/

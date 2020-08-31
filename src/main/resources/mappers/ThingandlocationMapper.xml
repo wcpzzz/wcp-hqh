@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatislearn.dao.ThingandlocationMapper">
   <resultMap id="BaseResultMap" type="com.mybatislearn.dao.model.Thingandlocation">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="thing_id" jdbcType="VARCHAR" property="thingId" />
-    <result column="location_id" jdbcType="VARCHAR" property="locationId" />
-    <result column="creater" jdbcType="VARCHAR" property="creater" />
-    <result column="master" jdbcType="VARCHAR" property="master" />
-    <result column="modi_time" jdbcType="TIMESTAMP" property="modiTime" />
+    <id column="thingandlocation_id" jdbcType="VARCHAR" property="thingandlocationId" />
+    <result column="thingandlocation_thing_id" jdbcType="VARCHAR" property="thingandlocationThingId" />
+    <result column="thingandlocation_location_id" jdbcType="VARCHAR" property="thingandlocationLocationId" />
+    <result column="thingandlocation_user_creater" jdbcType="VARCHAR" property="thingandlocationUserCreater" />
+    <result column="thingandlocation_user_master" jdbcType="VARCHAR" property="thingandlocationUserMaster" />
+    <result column="thingandlocation_modi_time" jdbcType="TIMESTAMP" property="thingandlocationModiTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, thing_id, location_id, creater, master, modi_time
+    thingandlocation_id, thingandlocation_thing_id, thingandlocation_location_id, thingandlocation_user_creater, 
+    thingandlocation_user_master, thingandlocation_modi_time
   </sql>
   <select id="selectByExample" parameterType="com.mybatislearn.dao.model.ThingandlocationExample" resultMap="BaseResultMap">
     select
@@ -88,11 +89,11 @@
     select 
     <include refid="Base_Column_List" />
     from thingandlocation
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandlocation_id = #{thingandlocationId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from thingandlocation
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandlocation_id = #{thingandlocationId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.mybatislearn.dao.model.ThingandlocationExample">
     delete from thingandlocation
@@ -101,53 +102,55 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mybatislearn.dao.model.Thingandlocation">
-    insert into thingandlocation (id, thing_id, location_id, 
-      creater, master, modi_time
+    insert into thingandlocation (thingandlocation_id, thingandlocation_thing_id, 
+      thingandlocation_location_id, thingandlocation_user_creater, 
+      thingandlocation_user_master, thingandlocation_modi_time
       )
-    values (#{id,jdbcType=VARCHAR}, #{thingId,jdbcType=VARCHAR}, #{locationId,jdbcType=VARCHAR}, 
-      #{creater,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}, #{modiTime,jdbcType=TIMESTAMP}
+    values (#{thingandlocationId,jdbcType=VARCHAR}, #{thingandlocationThingId,jdbcType=VARCHAR}, 
+      #{thingandlocationLocationId,jdbcType=VARCHAR}, #{thingandlocationUserCreater,jdbcType=VARCHAR}, 
+      #{thingandlocationUserMaster,jdbcType=VARCHAR}, #{thingandlocationModiTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.mybatislearn.dao.model.Thingandlocation">
     insert into thingandlocation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="thingandlocationId != null">
+        thingandlocation_id,
       </if>
-      <if test="thingId != null">
-        thing_id,
+      <if test="thingandlocationThingId != null">
+        thingandlocation_thing_id,
       </if>
-      <if test="locationId != null">
-        location_id,
+      <if test="thingandlocationLocationId != null">
+        thingandlocation_location_id,
       </if>
-      <if test="creater != null">
-        creater,
+      <if test="thingandlocationUserCreater != null">
+        thingandlocation_user_creater,
       </if>
-      <if test="master != null">
-        master,
+      <if test="thingandlocationUserMaster != null">
+        thingandlocation_user_master,
       </if>
-      <if test="modiTime != null">
-        modi_time,
+      <if test="thingandlocationModiTime != null">
+        thingandlocation_modi_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+      <if test="thingandlocationId != null">
+        #{thingandlocationId,jdbcType=VARCHAR},
       </if>
-      <if test="thingId != null">
-        #{thingId,jdbcType=VARCHAR},
+      <if test="thingandlocationThingId != null">
+        #{thingandlocationThingId,jdbcType=VARCHAR},
       </if>
-      <if test="locationId != null">
-        #{locationId,jdbcType=VARCHAR},
+      <if test="thingandlocationLocationId != null">
+        #{thingandlocationLocationId,jdbcType=VARCHAR},
       </if>
-      <if test="creater != null">
-        #{creater,jdbcType=VARCHAR},
+      <if test="thingandlocationUserCreater != null">
+        #{thingandlocationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        #{master,jdbcType=VARCHAR},
+      <if test="thingandlocationUserMaster != null">
+        #{thingandlocationUserMaster,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        #{modiTime,jdbcType=TIMESTAMP},
+      <if test="thingandlocationModiTime != null">
+        #{thingandlocationModiTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -160,23 +163,23 @@
   <update id="updateByExampleSelective" parameterType="map">
     update thingandlocation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=VARCHAR},
+      <if test="record.thingandlocationId != null">
+        thingandlocation_id = #{record.thingandlocationId,jdbcType=VARCHAR},
       </if>
-      <if test="record.thingId != null">
-        thing_id = #{record.thingId,jdbcType=VARCHAR},
+      <if test="record.thingandlocationThingId != null">
+        thingandlocation_thing_id = #{record.thingandlocationThingId,jdbcType=VARCHAR},
       </if>
-      <if test="record.locationId != null">
-        location_id = #{record.locationId,jdbcType=VARCHAR},
+      <if test="record.thingandlocationLocationId != null">
+        thingandlocation_location_id = #{record.thingandlocationLocationId,jdbcType=VARCHAR},
       </if>
-      <if test="record.creater != null">
-        creater = #{record.creater,jdbcType=VARCHAR},
+      <if test="record.thingandlocationUserCreater != null">
+        thingandlocation_user_creater = #{record.thingandlocationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="record.master != null">
-        master = #{record.master,jdbcType=VARCHAR},
+      <if test="record.thingandlocationUserMaster != null">
+        thingandlocation_user_master = #{record.thingandlocationUserMaster,jdbcType=VARCHAR},
       </if>
-      <if test="record.modiTime != null">
-        modi_time = #{record.modiTime,jdbcType=TIMESTAMP},
+      <if test="record.thingandlocationModiTime != null">
+        thingandlocation_modi_time = #{record.thingandlocationModiTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,12 +188,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update thingandlocation
-    set id = #{record.id,jdbcType=VARCHAR},
-      thing_id = #{record.thingId,jdbcType=VARCHAR},
-      location_id = #{record.locationId,jdbcType=VARCHAR},
-      creater = #{record.creater,jdbcType=VARCHAR},
-      master = #{record.master,jdbcType=VARCHAR},
-      modi_time = #{record.modiTime,jdbcType=TIMESTAMP}
+    set thingandlocation_id = #{record.thingandlocationId,jdbcType=VARCHAR},
+      thingandlocation_thing_id = #{record.thingandlocationThingId,jdbcType=VARCHAR},
+      thingandlocation_location_id = #{record.thingandlocationLocationId,jdbcType=VARCHAR},
+      thingandlocation_user_creater = #{record.thingandlocationUserCreater,jdbcType=VARCHAR},
+      thingandlocation_user_master = #{record.thingandlocationUserMaster,jdbcType=VARCHAR},
+      thingandlocation_modi_time = #{record.thingandlocationModiTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,31 +201,31 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.mybatislearn.dao.model.Thingandlocation">
     update thingandlocation
     <set>
-      <if test="thingId != null">
-        thing_id = #{thingId,jdbcType=VARCHAR},
+      <if test="thingandlocationThingId != null">
+        thingandlocation_thing_id = #{thingandlocationThingId,jdbcType=VARCHAR},
       </if>
-      <if test="locationId != null">
-        location_id = #{locationId,jdbcType=VARCHAR},
+      <if test="thingandlocationLocationId != null">
+        thingandlocation_location_id = #{thingandlocationLocationId,jdbcType=VARCHAR},
       </if>
-      <if test="creater != null">
-        creater = #{creater,jdbcType=VARCHAR},
+      <if test="thingandlocationUserCreater != null">
+        thingandlocation_user_creater = #{thingandlocationUserCreater,jdbcType=VARCHAR},
       </if>
-      <if test="master != null">
-        master = #{master,jdbcType=VARCHAR},
+      <if test="thingandlocationUserMaster != null">
+        thingandlocation_user_master = #{thingandlocationUserMaster,jdbcType=VARCHAR},
       </if>
-      <if test="modiTime != null">
-        modi_time = #{modiTime,jdbcType=TIMESTAMP},
+      <if test="thingandlocationModiTime != null">
+        thingandlocation_modi_time = #{thingandlocationModiTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where thingandlocation_id = #{thingandlocationId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mybatislearn.dao.model.Thingandlocation">
     update thingandlocation
-    set thing_id = #{thingId,jdbcType=VARCHAR},
-      location_id = #{locationId,jdbcType=VARCHAR},
-      creater = #{creater,jdbcType=VARCHAR},
-      master = #{master,jdbcType=VARCHAR},
-      modi_time = #{modiTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=VARCHAR}
+    set thingandlocation_thing_id = #{thingandlocationThingId,jdbcType=VARCHAR},
+      thingandlocation_location_id = #{thingandlocationLocationId,jdbcType=VARCHAR},
+      thingandlocation_user_creater = #{thingandlocationUserCreater,jdbcType=VARCHAR},
+      thingandlocation_user_master = #{thingandlocationUserMaster,jdbcType=VARCHAR},
+      thingandlocation_modi_time = #{thingandlocationModiTime,jdbcType=TIMESTAMP}
+    where thingandlocation_id = #{thingandlocationId,jdbcType=VARCHAR}
   </update>
 </mapper>

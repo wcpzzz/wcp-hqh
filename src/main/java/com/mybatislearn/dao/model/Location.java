@@ -7,7 +7,7 @@ import java.util.Date;
 @ToString
 public class Location {
     @ApiModelProperty("")
-    private String id;
+    private String locationId;
 
     @ApiModelProperty("地点名称")
     private String locationName;
@@ -22,20 +22,20 @@ public class Location {
     private String locationSlave;
 
     @ApiModelProperty("修改时间")
-    private Date modiTime;
+    private Date locationModiTime;
 
     @ApiModelProperty("创建者")
-    private String creater;
+    private String locationUserCreater;
 
     @ApiModelProperty("管理者")
-    private String master;
+    private String locationUserMaster;
 
-    public String getId() {
-        return id;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setLocationId(String locationId) {
+        this.locationId = locationId == null ? null : locationId.trim();
     }
 
     public String getLocationName() {
@@ -70,27 +70,27 @@ public class Location {
         this.locationSlave = locationSlave == null ? null : locationSlave.trim();
     }
 
-    public Date getModiTime() {
-        return modiTime;
+    public Date getLocationModiTime() {
+        return locationModiTime;
     }
 
-    public void setModiTime(Date modiTime) {
-        this.modiTime = modiTime;
+    public void setLocationModiTime(Date locationModiTime) {
+        this.locationModiTime = locationModiTime;
     }
 
-    public String getCreater() {
-        return creater;
+    public String getLocationUserCreater() {
+        return locationUserCreater;
     }
 
-    public void setCreater(String creater) {
-        this.creater = creater == null ? null : creater.trim();
+    public void setLocationUserCreater(String locationUserCreater) {
+        this.locationUserCreater = locationUserCreater == null ? null : locationUserCreater.trim();
     }
 
-    public String getMaster() {
-        return master;
+    public String getLocationUserMaster() {
+        return locationUserMaster;
     }
 
-    public void setMaster(String master) {
-        this.master = master == null ? null : master.trim();
+    public void setLocationUserMaster(String locationUserMaster) {
+        this.locationUserMaster = locationUserMaster == null ? null : locationUserMaster.trim();
     }
 }

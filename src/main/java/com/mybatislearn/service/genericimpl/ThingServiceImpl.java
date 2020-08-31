@@ -8,12 +8,15 @@ import com.mybatislearn.core.utils.ExampleBuilder;
 import com.mybatislearn.dao.ThingMapper;
 import com.mybatislearn.dao.model.Thing;
 import com.mybatislearn.dao.model.ThingExample;
+import com.mybatislearn.interceptor.RequestHolder;
 import com.mybatislearn.service.GenericService;
+import com.mybatislearn.utils.wcputils.EmptyObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 示例Service实现
@@ -25,11 +28,19 @@ public class ThingServiceImpl implements GenericService<Thing, String> {
 //    GenericService<Thing, Integer>前一个为对象，后一个为主键类型
     @Autowired
     private ThingMapper thingMapper;
-
+    @Autowired
+    private EmptyObject emptyObject;
     @Override
     public String create(Thing thing) {
-        thingMapper.insertSelective(thing);
-        return thing.getId();
+        thing.setThingUserCreater(RequestHolder.getId ());
+        //使用uuid作为主键
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        thing.setThingId(uuid);
+        //判非空
+        if(emptyObject.isNotEmpty(thing.getThingId ())&&emptyObject.isNotEmpty(thing.getThingUserMaster ())&&emptyObject.isNotEmpty(thing.getThingUserOwner ())&&emptyObject.isNotEmpty(thing.getThingName ())&&emptyObject.isNotEmpty(thing.getThingStatus ())){
+            thingMapper.insertSelective(thing);
+        }
+        return thing.getThingId();
     }
 
     @Override

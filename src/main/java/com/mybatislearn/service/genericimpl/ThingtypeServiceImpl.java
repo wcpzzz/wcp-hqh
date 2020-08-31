@@ -29,7 +29,7 @@ public class ThingtypeServiceImpl implements GenericService<Thingtype, String> {
     @Override
     public String create(Thingtype thingtype) {
         thingtypeMapper.insertSelective(thingtype);
-        return thingtype.getId();
+        return thingtype.getThingtypeId ();
     }
 
     @Override
