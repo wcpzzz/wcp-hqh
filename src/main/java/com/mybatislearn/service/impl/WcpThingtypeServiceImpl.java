@@ -24,7 +24,7 @@ public class WcpThingtypeServiceImpl implements WcpThingtypeService<Thingtype> {
     @Autowired
     private ThingtypeMapper thingtypeMapper;
     @Override
-    public Object findThingtypeWithUser(Thingtype thingtype) {
+    public Object findListThingtypeWithUser(Thingtype thingtype) {
         ExampleBuilder<ThingtypeExample, ThingtypeExample.Criteria> builder = ExampleBuilder.create(ThingtypeExample.class, ThingtypeExample.Criteria.class);
         return thingtypeMapper.selectByExampleWithUser(builder.buildExamplePack(thingtype).getExample());
     }

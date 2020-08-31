@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends GenericController<User, String> {
     @Autowired
     private LoginService<User> loginService;
-
     @PostMapping("/login")
     @ApiOperation("登录")
     public ApiResponse<Token> login(@RequestBody User req) {

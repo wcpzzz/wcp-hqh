@@ -23,7 +23,7 @@ public class WcpLocationServiceImpl implements WcpLocationService<Location> {
     @Autowired
     private LocationMapper locationMapper;
     @Override
-    public Object findLocationWithUser(Location location) {
+    public Object findListLocationWithUser(Location location) {
         ExampleBuilder<LocationExample, LocationExample.Criteria> builder = ExampleBuilder.create(LocationExample.class, LocationExample.Criteria.class);
         return locationMapper.selectByExampleWithUser(builder.buildExamplePack(location).getExample());
     }

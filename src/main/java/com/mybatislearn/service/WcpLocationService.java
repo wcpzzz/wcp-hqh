@@ -1,5 +1,5 @@
 package com.mybatislearn.service;
 
-public interface WcpLocationService<Thing> {
-    Object findLocationWithUser(Thing thing);
+public interface WcpLocationService<Location> {
+    Object findListLocationWithUser(Location location);
 }

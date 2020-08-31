@@ -24,7 +24,7 @@ public class ThingController extends GenericController<Thing,String> {
 
     @PostMapping("/findListWithUser")
     @ApiOperation("连表查")
-    public ApiResponse<ThingWithThingtypeWithUserWithLocation> findListWithUser2(@RequestBody Thing req) {
+    public ApiResponse<ThingWithThingtypeWithUserWithLocation> findListWithUser(@RequestBody Thing req) {
         //可以在这个位置写一个传输到前端用的类
         if(wcpThingService.findThingWithUser (req)!=null){
             return ApiResponse.success(wcpThingService.findThingWithUser(req));

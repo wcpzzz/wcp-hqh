@@ -313,13 +313,23 @@
     thing.thing_user_owner,
     thing.thing_modi_time,
     thing.thing_user_creater,
-    thingtype.thingtype_id,
+    location.location_id,
+    location.location_name,
+    location.location_memo,
+    location.location_master,
+    location.location_slave,
+    location.location_modi_time,
+    location.location_user_creater,
+    location.location_user_master,
     thingtype.thingtype_name,
-    thingtype.thingtype_user_master,
+    thingtype.thingtype_modi_time,
     thingtype.thingtype_user_creater,
-    thingtype.thingtype_modi_time
+    thingtype.thingtype_user_master,
+    thingtype.thingtype_id
     FROM
     thing
+    INNER JOIN thingandlocation ON thingandlocation.thingandlocation_thing_id = thing.thing_id
+    INNER JOIN location ON thingandlocation.thingandlocation_location_id = location.location_id
     INNER JOIN thingandtype ON thingandtype.thingandtype_thing_id = thing.thing_id
     INNER JOIN thingtype ON thingandtype.thingandtype_thingtype_id = thingtype.thingtype_id
     <if test="_parameter != null">

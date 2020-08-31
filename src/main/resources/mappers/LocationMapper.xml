@@ -267,13 +267,13 @@
   </update>
 
 <!--wcp-->
-  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingtypeExample" resultMap="WcpLocationBaseResultMap">
+  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.LocationExample" resultMap="WcpLocationBaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from thingtype
+    from location
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
