@@ -27,4 +27,9 @@ public interface LocationMapper {
     int updateByPrimaryKeySelective(Location record);
 
     int updateByPrimaryKey(Location record);
+
+
+    //wcp
+    List selectByExampleWithUser(LocationExample record);
+
 }

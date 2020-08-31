@@ -1,4 +1,3 @@
-/*
 package com.mybatislearn.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
@@ -23,20 +22,18 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
 
     @Autowired
     private TokenUtil tokenUtil;
-*/
-/*    @Autowired
-    private RequestHolder requestHolder;*//*
+    @Autowired
+    private RequestHolder requestHolder;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        BodyReaderHttpServletRequestWrapper requestWrapper = new BodyReaderHttpServletRequestWrapper (request);
+        BodyReaderHttpServletRequestWrapper requestWrapper = new BodyReaderHttpServletRequestWrapper (request);//这个用来存前端请求，不然拦截器拦了之后不会给controller层
         String contentType = request.getHeader (CONTENT_TYPE);
         String token;
         JSONObject requestJson = JSONObject.parseObject (requestWrapper.getBodyString (request));
-        */
 /**
-         * 检查是请求头content-type ，取得token
-         *//*
+         * 检查是请求头content-type ，取得token*/
+
 
         if (!ObjectUtils.isEmpty (contentType) && contentType.contains (APPLICATION_JSON)) {
             if (requestJson.containsKey ("Sign")) {
@@ -50,9 +47,11 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
         //这里进行token校验，输出没有过的请求路径
         if (tokenUtil.verify (token)!=null) {
 //            requestJson.put("creater",tokenUtil.verify (token));
+            //如果有token，就把token存到全局变量
             RequestHolder.add (tokenUtil.verify (token));
             return true;
         } else {
+//            如果没有token就手写一个返回请求,告诉前端没有
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
@@ -68,4 +67,3 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
         }
     }
 }
-*/

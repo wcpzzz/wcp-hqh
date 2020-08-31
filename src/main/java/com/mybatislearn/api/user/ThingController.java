@@ -3,7 +3,6 @@ package com.mybatislearn.api.user;
 import com.mybatislearn.api.GenericController;
 import com.mybatislearn.core.model.ApiResponse;
 import com.mybatislearn.dao.dto.ThingWithThingtypeWithUserWithLocation;
-import com.mybatislearn.dao.dto.ThingUser;
 import com.mybatislearn.dao.model.Thing;
 import com.mybatislearn.service.WcpThingService;
 import io.swagger.annotations.Api;
@@ -25,7 +24,7 @@ public class ThingController extends GenericController<Thing,String> {
 
     @PostMapping("/findListWithUser")
     @ApiOperation("连表查")
-    public ApiResponse<ThingUser> findListWithUser2(@RequestBody Thing req) {
+    public ApiResponse<ThingWithThingtypeWithUserWithLocation> findListWithUser2(@RequestBody Thing req) {
         //可以在这个位置写一个传输到前端用的类
         if(wcpThingService.findThingWithUser (req)!=null){
             return ApiResponse.success(wcpThingService.findThingWithUser(req));

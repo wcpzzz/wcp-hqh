@@ -8,6 +8,14 @@
     <result column="thingtype_user_creater" jdbcType="VARCHAR" property="thingtypeUserCreater" />
     <result column="thingtype_user_master" jdbcType="VARCHAR" property="thingtypeUserMaster" />
   </resultMap>
+  <resultMap id="WcpThingTypeBaseResultMap" type="com.mybatislearn.dao.dto.ThingtypeUser"
+             extends="com.mybatislearn.dao.ThingMapper.BaseResultMap">
+<!--    <association property="thingtypesList" resultMap="com.mybatislearn.dao.ThingtypeMapper.BaseResultMap"/>
+    <association property="thingLocationList" resultMap="com.mybatislearn.dao.LocationMapper.BaseResultMap"/>-->
+    <association property="thingtypeUserMasterObject" column="thing_user_master" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+    <association property="thingtypeUserCreaterObject" column="thing_user_creater" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -84,7 +92,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from thingtype
     where thingtype_id = #{thingtypeId,jdbcType=VARCHAR}
@@ -100,10 +108,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mybatislearn.dao.model.Thingtype">
-    insert into thingtype (thingtype_id, thingtype_name, thingtype_modi_time, 
+    insert into thingtype (thingtype_id, thingtype_name, thingtype_modi_time,
       thingtype_user_creater, thingtype_user_master
       )
-    values (#{thingtypeId,jdbcType=VARCHAR}, #{thingtypeName,jdbcType=VARCHAR}, #{thingtypeModiTime,jdbcType=TIMESTAMP}, 
+    values (#{thingtypeId,jdbcType=VARCHAR}, #{thingtypeName,jdbcType=VARCHAR}, #{thingtypeModiTime,jdbcType=TIMESTAMP},
       #{thingtypeUserCreater,jdbcType=VARCHAR}, #{thingtypeUserMaster,jdbcType=VARCHAR}
       )
   </insert>
@@ -210,4 +218,19 @@
       thingtype_user_master = #{thingtypeUserMaster,jdbcType=VARCHAR}
     where thingtype_id = #{thingtypeId,jdbcType=VARCHAR}
   </update>
+<!--wcp-->
+  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingtypeExample" resultMap="WcpThingTypeBaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from thingtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

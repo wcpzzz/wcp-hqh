@@ -2,7 +2,9 @@ package com.mybatislearn.dao;
 
 import com.mybatislearn.dao.model.Thing;
 import com.mybatislearn.dao.model.ThingExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ThingMapper {
@@ -29,10 +31,10 @@ public interface ThingMapper {
     int updateByPrimaryKey(Thing record);
 
 
-    //一对多
+    //wcp
     List selectByExampleWithUser(ThingExample example);
-    //多对多
+
     List selectByExampleWithThingtypeWithUserWithLocation(ThingExample example);
-    //多对多
+
     List selectByExampleWithLocation(ThingExample example);
 }

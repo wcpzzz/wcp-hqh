@@ -27,4 +27,9 @@ public interface ThingtypeMapper {
     int updateByPrimaryKeySelective(Thingtype record);
 
     int updateByPrimaryKey(Thingtype record);
+
+
+    //wcp
+    List selectByExampleWithUser(ThingtypeExample record);
+
 }

@@ -12,24 +12,7 @@
     <result column="thing_modi_time" jdbcType="TIMESTAMP" property="thingModiTime" />
     <result column="thing_user_creater" jdbcType="VARCHAR" property="thingUserCreater" />
   </resultMap>
-  <resultMap id="WcpUserBaseResultMap" type="com.mybatislearn.dao.dto.ThingUser"
-             extends="com.mybatislearn.dao.ThingMapper.BaseResultMap">
-    <!--    <association property="user2" resultMap="com.mybatislearn.dao.UserMapper.BaseResultMap"/>-->
-    <association property="user2" column="thing_user_master" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
-    <association property="user3" column="thing_user_creater" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
-    <!--    <collection property="user2" ofType="com.mybatislearn.dao.model.User2" javaType="list">
-          <id column="user_id" jdbcType="VARCHAR" property="userId" />
-          <result column="user_name" jdbcType="VARCHAR" property="userName" />
-          <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-          <result column="email" jdbcType="VARCHAR" property="email" />
-          <result column="role" jdbcType="VARCHAR" property="role" />
-          <result column="user_master" jdbcType="VARCHAR" property="userMaster" />
-          <result column="user_slave" jdbcType="VARCHAR" property="userSlave" />
-          <result column="modi_time" jdbcType="TIMESTAMP" property="modiTime" />
-        </collection>-->
-    <!--    这个是加前缀，防止连表重名的-->
-    <!--    <collection property="user2" ofType="com.mybatislearn.dao.model.User2" columnPrefix="user2_"/>-->
-  </resultMap>
+<!--  wcp-->
   <resultMap id="WcpThingTypeBaseResultMap" type="com.mybatislearn.dao.dto.ThingWithThingtypeWithUserWithLocation"
              extends="com.mybatislearn.dao.ThingMapper.BaseResultMap">
     <association property="thingtypesList" resultMap="com.mybatislearn.dao.ThingtypeMapper.BaseResultMap"/>
@@ -300,8 +283,8 @@
       thing_user_creater = #{thingUserCreater,jdbcType=VARCHAR}
     where thing_id = #{thingId,jdbcType=VARCHAR}
   </update>
-
-  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpUserBaseResultMap">
+<!--wcp-->
+  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpThingTypeBaseResultMap">
     select
     <if test="distinct">
       distinct

@@ -1,6 +1,7 @@
 package com.mybatislearn.dao.dto;
 
 import com.mybatislearn.dao.model.Location;
+import com.mybatislearn.dao.model.Thingtype;
 import com.mybatislearn.dao.model.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,9 +12,9 @@ import java.util.List;
 
 @ApiModel
 @Data
-public class LocationUser extends Location {
+public class ThingtypeUser extends Thingtype {
     //连表查询
-    private User locationUserMasterObject;
+    private User thingtypeUserMasterObject;
     //连表查询
-    private User locationUserCreaterObject;
+    private User thingtypeUserCreaterObject;
 }

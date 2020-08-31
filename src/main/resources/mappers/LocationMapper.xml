@@ -11,6 +11,13 @@
     <result column="location_user_creater" jdbcType="VARCHAR" property="locationUserCreater" />
     <result column="location_user_master" jdbcType="VARCHAR" property="locationUserMaster" />
   </resultMap>
+<!--  wcp-->
+  <resultMap id="WcpLocationBaseResultMap" type="com.mybatislearn.dao.dto.LocationUser"
+             extends="com.mybatislearn.dao.ThingMapper.BaseResultMap">
+    <association property="locationUserMasterObject" column="thing_user_master" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+    <association property="locationUserCreaterObject" column="thing_user_creater" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -70,7 +77,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    location_id, location_name, location_memo, location_master, location_slave, location_modi_time, 
+    location_id, location_name, location_memo, location_master, location_slave, location_modi_time,
     location_user_creater, location_user_master
   </sql>
   <select id="selectByExample" parameterType="com.mybatislearn.dao.model.LocationExample" resultMap="BaseResultMap">
@@ -88,7 +95,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from location
     where location_id = #{locationId,jdbcType=VARCHAR}
@@ -104,12 +111,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mybatislearn.dao.model.Location">
-    insert into location (location_id, location_name, location_memo, 
-      location_master, location_slave, location_modi_time, 
+    insert into location (location_id, location_name, location_memo,
+      location_master, location_slave, location_modi_time,
       location_user_creater, location_user_master
       )
-    values (#{locationId,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{locationMemo,jdbcType=VARCHAR}, 
-      #{locationMaster,jdbcType=VARCHAR}, #{locationSlave,jdbcType=VARCHAR}, #{locationModiTime,jdbcType=TIMESTAMP}, 
+    values (#{locationId,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{locationMemo,jdbcType=VARCHAR},
+      #{locationMaster,jdbcType=VARCHAR}, #{locationSlave,jdbcType=VARCHAR}, #{locationModiTime,jdbcType=TIMESTAMP},
       #{locationUserCreater,jdbcType=VARCHAR}, #{locationUserMaster,jdbcType=VARCHAR}
       )
   </insert>
@@ -258,4 +265,21 @@
       location_user_master = #{locationUserMaster,jdbcType=VARCHAR}
     where location_id = #{locationId,jdbcType=VARCHAR}
   </update>
+
+<!--wcp-->
+  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingtypeExample" resultMap="WcpLocationBaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from thingtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
 </mapper>
