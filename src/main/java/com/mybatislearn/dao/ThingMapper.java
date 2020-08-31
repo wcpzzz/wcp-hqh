@@ -30,9 +30,9 @@ public interface ThingMapper {
 
 
     //一对多
-    List selectByExampleWithUser2(ThingExample example);
+    List selectByExampleWithUser(ThingExample example);
     //多对多
-    List selectByExampleWithThingtype(ThingExample example);
+    List selectByExampleWithThingtypeWithUserWithLocation(ThingExample example);
     //多对多
     List selectByExampleWithLocation(ThingExample example);
 }

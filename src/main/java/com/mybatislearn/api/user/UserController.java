@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 @Api(tags = "User 用户表")
-public class User2Controller extends GenericController<User, String> {
+public class UserController extends GenericController<User, String> {
     @Autowired
     private LoginService<User> loginService;
 

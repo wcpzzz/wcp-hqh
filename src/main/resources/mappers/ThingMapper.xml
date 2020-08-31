@@ -30,11 +30,12 @@
     <!--    这个是加前缀，防止连表重名的-->
     <!--    <collection property="user2" ofType="com.mybatislearn.dao.model.User2" columnPrefix="user2_"/>-->
   </resultMap>
-  <resultMap id="WcpThingTypeBaseResultMap" type="com.mybatislearn.dao.dto.ThingThingtype"
+  <resultMap id="WcpThingTypeBaseResultMap" type="com.mybatislearn.dao.dto.ThingWithThingtypeWithUserWithLocation"
              extends="com.mybatislearn.dao.ThingMapper.BaseResultMap">
-    <association property="thingtypes" resultMap="com.mybatislearn.dao.ThingtypeMapper.BaseResultMap"/>
-    <association property="user2" column="thing_user_master" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
-    <association property="user3" column="thing_user_creater" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+    <association property="thingtypesList" resultMap="com.mybatislearn.dao.ThingtypeMapper.BaseResultMap"/>
+    <association property="thingLocationList" resultMap="com.mybatislearn.dao.LocationMapper.BaseResultMap"/>
+    <association property="thingUserMasterObject" column="thing_user_master" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
+    <association property="thingUserCreaterObject" column="thing_user_creater" select="com.mybatislearn.dao.UserMapper.selectByPrimaryKey"/>
   </resultMap>
 
 
@@ -300,7 +301,7 @@
     where thing_id = #{thingId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectByExampleWithUser2" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpUserBaseResultMap">
+  <select id="selectByExampleWithUser" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpUserBaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -315,7 +316,7 @@
     </if>
   </select>
   <!--多对多-->
-  <select id="selectByExampleWithThingtype" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpThingTypeBaseResultMap">
+  <select id="selectByExampleWithThingtypeWithUserWithLocation" parameterType="com.mybatislearn.dao.model.ThingExample" resultMap="WcpThingTypeBaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -352,22 +353,27 @@
     <if test="distinct">
       distinct
     </if>
-    thing.id,
+    thing.thing_id,
     thing.thing_name,
     thing.thing_status,
     thing.thing_money,
     thing.thing_num,
-    thing.`master`,
-    thing.`owner`,
-    thing.modi_time,
-    thingtype.id thingtypeid,
-    thingtype.thingtype_name,
-    thingtype.modi_time,
-    thingtype.creater,
-    thingtype.`master`
-    from thingtype
-    INNER JOIN thingandtype ON thingandtype.thingtype_id = thingtype.id
-    INNER JOIN thing ON thingandtype.thing_id = thing.id
+    thing.thing_user_master,
+    thing.thing_user_owner,
+    thing.thing_modi_time,
+    thing.thing_user_creater,
+    location.location_id,
+    location.location_name,
+    location.location_memo,
+    location.location_master,
+    location.location_slave,
+    location.location_modi_time,
+    location.location_user_creater,
+    location.location_user_master
+    FROM
+    thing
+    INNER JOIN thingandlocation ON thingandlocation.thingandlocation_thing_id = thing.thing_id
+    INNER JOIN location ON thingandlocation.thingandlocation_location_id = location.location_id
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

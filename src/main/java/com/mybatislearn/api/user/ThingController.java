@@ -2,7 +2,7 @@ package com.mybatislearn.api.user;
 
 import com.mybatislearn.api.GenericController;
 import com.mybatislearn.core.model.ApiResponse;
-import com.mybatislearn.dao.dto.ThingThingtype;
+import com.mybatislearn.dao.dto.ThingWithThingtypeWithUserWithLocation;
 import com.mybatislearn.dao.dto.ThingUser;
 import com.mybatislearn.dao.model.Thing;
 import com.mybatislearn.service.WcpThingService;
@@ -23,7 +23,7 @@ public class ThingController extends GenericController<Thing,String> {
     @Autowired
     private WcpThingService<Thing> wcpThingService;
 
-    @PostMapping("/findListWithUser2")
+    @PostMapping("/findListWithUser")
     @ApiOperation("连表查")
     public ApiResponse<ThingUser> findListWithUser2(@RequestBody Thing req) {
         //可以在这个位置写一个传输到前端用的类
@@ -33,12 +33,12 @@ public class ThingController extends GenericController<Thing,String> {
             return ApiResponse.failed ("登陆失败");
         }
     }
-    @PostMapping("/findListWithThingtype")
-    @ApiOperation("多对多")
-    public ApiResponse<ThingThingtype> findListWithThingtype(@RequestBody Thing req) {
+    @PostMapping("/findListThingWithThingtypeWithUserWithLocation")
+    @ApiOperation("连表查物品")
+    public ApiResponse<ThingWithThingtypeWithUserWithLocation> findListThingWithThingtypeWithUserWithLocation(@RequestBody Thing req) {
         //可以在这个位置写一个传输到前端用的类
-        if(wcpThingService.findThingWithThingtype (req)!=null){
-            return ApiResponse.success(wcpThingService.findThingWithThingtype(req));
+        if(wcpThingService.findListThingWithThingtypeWithUserWithLocation (req)!=null){
+            return ApiResponse.success(wcpThingService.findListThingWithThingtypeWithUserWithLocation(req));
         }else {
             return ApiResponse.failed ("登陆失败");
         }

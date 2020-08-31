@@ -18,12 +18,12 @@ public class WcpThingServiceImpl implements WcpThingService<Thing> {
     @Override
     public Object findThingWithUser(Thing thing) {
         ExampleBuilder<ThingExample, ThingExample.Criteria> builder = ExampleBuilder.create(ThingExample.class, ThingExample.Criteria.class);
-        return thingMapper.selectByExampleWithUser2(builder.buildExamplePack(thing).getExample());
+        return thingMapper.selectByExampleWithUser(builder.buildExamplePack(thing).getExample());
     }
 
     @Override
-    public Object findThingWithThingtype(Thing thing) {
+    public Object findListThingWithThingtypeWithUserWithLocation(Thing thing) {
         ExampleBuilder<ThingExample, ThingExample.Criteria> builder = ExampleBuilder.create(ThingExample.class, ThingExample.Criteria.class);
-        return thingMapper.selectByExampleWithThingtype(builder.buildExamplePack(thing).getExample());
+        return thingMapper.selectByExampleWithThingtypeWithUserWithLocation (builder.buildExamplePack(thing).getExample());
     }
 }
