@@ -1,5 +1,7 @@
 package com.mybatislearn.service;
 
+import com.mybatislearn.utils.jwtmodel.Token;
+
 public interface LoginService<User2> {
-    Object login(User2 user);
+    Token login(User2 user);
 }

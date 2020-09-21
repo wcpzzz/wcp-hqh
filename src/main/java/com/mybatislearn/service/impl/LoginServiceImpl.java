@@ -1,9 +1,9 @@
 package com.mybatislearn.service.impl;
-
 import com.mybatislearn.core.utils.ExampleBuilder;
 import com.mybatislearn.dao.UserMapper;
 import com.mybatislearn.dao.model.User;
 import com.mybatislearn.dao.model.UserExample;
+import com.mybatislearn.interceptor.RequestHolder;
 import com.mybatislearn.interceptor.TokenUtil;
 import com.mybatislearn.service.LoginService;
 import com.mybatislearn.utils.jwtmodel.Token;
@@ -35,8 +35,10 @@ public class LoginServiceImpl implements LoginService<User> {
             token.setToken (jwtTokenService.generatorToken (jwtInfo));
             System.out.println (token.getToken ());
             return token;*/
+            //这里可以把token存入RequestHolder
             Token token = new Token();
             token.setToken (tokenUtil.sign (users.get (0)));
+            RequestHolder.add (tokenUtil.sign (users.get (0)));
             return token;
 //            return users.get(0);
         }

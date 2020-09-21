@@ -26,7 +26,7 @@ public class UserController extends GenericController<User, String> {
     public ApiResponse<Token> login(@RequestBody User req) {
         //可以在这个位置写一个传输到前端用的类
         if(loginService.login(req)!=null){
-            return ApiResponse.success(loginService.login(req));
+            return ApiResponse.success(null);
         }else {
             return ApiResponse.failed ("登陆失败");
         }

@@ -9,6 +9,7 @@ import com.mybatislearn.dao.ThingMapper;
 import com.mybatislearn.dao.model.Thing;
 import com.mybatislearn.dao.model.ThingExample;
 import com.mybatislearn.interceptor.RequestHolder;
+import com.mybatislearn.interceptor.TokenUtil;
 import com.mybatislearn.service.GenericService;
 import com.mybatislearn.utils.wcputils.EmptyObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,20 @@ public class ThingServiceImpl implements GenericService<Thing, String> {
     @Autowired
     private ThingMapper thingMapper;
     @Autowired
+    private TokenUtil tokenUtil;
+    @Autowired
     private EmptyObject emptyObject;
     @Override
     public String create(Thing thing) {
-        thing.setThingUserCreater(RequestHolder.getId ());
+        thing.setThingUserCreater(tokenUtil.verify(RequestHolder.getId ()));
         //使用uuid作为主键
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         thing.setThingId(uuid);
+        System.out.println (thing.toString ());
         //判非空
-        if(emptyObject.isNotEmpty(thing.getThingId ())&&emptyObject.isNotEmpty(thing.getThingUserMaster ())&&emptyObject.isNotEmpty(thing.getThingUserOwner ())&&emptyObject.isNotEmpty(thing.getThingName ())&&emptyObject.isNotEmpty(thing.getThingStatus ())){
+//        if(emptyObject.isNotEmpty(thing.getThingId ())&&emptyObject.isNotEmpty(thing.getThingUserMaster ())&&emptyObject.isNotEmpty(thing.getThingUserOwner ())&&emptyObject.isNotEmpty(thing.getThingName ())&&emptyObject.isNotEmpty(thing.getThingStatus ())){
             thingMapper.insertSelective(thing);
-        }
+//        }
         return thing.getThingId();
     }
 
@@ -77,7 +81,7 @@ public class ThingServiceImpl implements GenericService<Thing, String> {
     @Override
     public Thing findOne(Thing thing) {
         ExampleBuilder<ThingExample, ThingExample.Criteria> builder = ExampleBuilder.create(ThingExample.class, ThingExample.Criteria.class);
-        List<Thing> things = thingMapper.selectByExample(builder.buildExamplePack(thing).getExample());
+        List<Thing> things = thingMapper.selectByExample(builder.buildExamplePack(thing,"1").getExample());
         if (things.size() > 0) {
             return things.get(0);
         }

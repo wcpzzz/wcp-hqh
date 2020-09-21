@@ -47,8 +47,8 @@ public class HttpInterceptorUtil implements HandlerInterceptor {
         //这里进行token校验，输出没有过的请求路径
         if (tokenUtil.verify (token)!=null) {
 //            requestJson.put("creater",tokenUtil.verify (token));
-            //如果有token，就把token存到全局变量
-            RequestHolder.add (tokenUtil.verify (token));
+            //如果有token，就把token存到全局变量,create方法需要userId的时候要解出来
+            RequestHolder.add (token);
             return true;
         } else {
 //            如果没有token就手写一个返回请求,告诉前端没有

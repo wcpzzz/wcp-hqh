@@ -8,12 +8,14 @@ import com.mybatislearn.core.utils.ExampleBuilder;
 import com.mybatislearn.dao.LocationMapper;
 import com.mybatislearn.dao.model.Location;
 import com.mybatislearn.dao.model.LocationExample;
+import com.mybatislearn.interceptor.RequestHolder;
 import com.mybatislearn.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 示例Service实现
@@ -28,8 +30,16 @@ public class LocationServiceImpl implements GenericService<Location, String> {
 
     @Override
     public String create(Location location) {
+        location.setLocationUserCreater(RequestHolder.getId ());
+        //使用uuid作为主键
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        location.setLocationId(uuid);
+        System.out.println (location.toString ());
+        //判非空
+//        if(emptyObject.isNotEmpty(thing.getThingId ())&&emptyObject.isNotEmpty(thing.getThingUserMaster ())&&emptyObject.isNotEmpty(thing.getThingUserOwner ())&&emptyObject.isNotEmpty(thing.getThingName ())&&emptyObject.isNotEmpty(thing.getThingStatus ())){
         locationMapper.insertSelective(location);
-        return location.getLocationId ();
+//        }
+        return location.getLocationId();
     }
 
     @Override
@@ -66,7 +76,7 @@ public class LocationServiceImpl implements GenericService<Location, String> {
     @Override
     public Location findOne(Location location) {
         ExampleBuilder<LocationExample, LocationExample.Criteria> builder = ExampleBuilder.create(LocationExample.class, LocationExample.Criteria.class);
-        List<Location> locations = locationMapper.selectByExample(builder.buildExamplePack(location).getExample());
+        List<Location> locations = locationMapper.selectByExample(builder.buildExamplePack(location,"1").getExample());
         if (locations.size() > 0) {
             return locations.get(0);
         }

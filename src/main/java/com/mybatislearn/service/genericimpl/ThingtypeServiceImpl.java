@@ -66,7 +66,7 @@ public class ThingtypeServiceImpl implements GenericService<Thingtype, String> {
     @Override
     public Thingtype findOne(Thingtype thingtype) {
         ExampleBuilder<ThingtypeExample, ThingtypeExample.Criteria> builder = ExampleBuilder.create(ThingtypeExample.class, ThingtypeExample.Criteria.class);
-        List<Thingtype> thingtypes = thingtypeMapper.selectByExample(builder.buildExamplePack(thingtype).getExample());
+        List<Thingtype> thingtypes = thingtypeMapper.selectByExample(builder.buildExamplePack(thingtype,"1").getExample());
         if (thingtypes.size() > 0) {
             return thingtypes.get(0);
         }

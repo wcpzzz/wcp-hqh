@@ -66,7 +66,7 @@ public class ThingandtypeServiceImpl implements GenericService<Thingandtype, Str
     @Override
     public Thingandtype findOne(Thingandtype thingandtype) {
         ExampleBuilder<ThingandtypeExample, ThingandtypeExample.Criteria> builder = ExampleBuilder.create(ThingandtypeExample.class, ThingandtypeExample.Criteria.class);
-        List<Thingandtype> thingandtypes = thingandtypeMapper.selectByExample(builder.buildExamplePack(thingandtype).getExample());
+        List<Thingandtype> thingandtypes = thingandtypeMapper.selectByExample(builder.buildExamplePack(thingandtype,"1").getExample());
         if (thingandtypes.size() > 0) {
             return thingandtypes.get(0);
         }

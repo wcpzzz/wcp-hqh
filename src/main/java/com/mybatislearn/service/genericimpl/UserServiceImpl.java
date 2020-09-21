@@ -73,7 +73,7 @@ public class UserServiceImpl implements GenericService<User, String> {
     public User findOne(User user) {
         ExampleBuilder<UserExample, UserExample.Criteria> builder = ExampleBuilder.create(UserExample.class, UserExample.Criteria.class);
 //        就是打包一下
-        List<User> users = userMapper.selectByExample(builder.buildExamplePack(user).getExample());
+        List<User> users = userMapper.selectByExample(builder.buildExamplePack(user,"1").getExample());
         if (users.size() > 0) {
             return users.get(0);
         }

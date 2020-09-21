@@ -66,7 +66,7 @@ public class ThingandlocationServiceImpl implements GenericService<Thingandlocat
     @Override
     public Thingandlocation findOne(Thingandlocation thingandlocation) {
         ExampleBuilder<ThingandlocationExample, ThingandlocationExample.Criteria> builder = ExampleBuilder.create(ThingandlocationExample.class, ThingandlocationExample.Criteria.class);
-        List<Thingandlocation> thingandlocations = thingandlocationMapper.selectByExample(builder.buildExamplePack(thingandlocation).getExample());
+        List<Thingandlocation> thingandlocations = thingandlocationMapper.selectByExample(builder.buildExamplePack(thingandlocation,"1").getExample());
         if (thingandlocations.size() > 0) {
             return thingandlocations.get(0);
         }
