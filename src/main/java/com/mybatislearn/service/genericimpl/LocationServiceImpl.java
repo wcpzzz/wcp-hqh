@@ -9,6 +9,7 @@ import com.mybatislearn.dao.LocationMapper;
 import com.mybatislearn.dao.model.Location;
 import com.mybatislearn.dao.model.LocationExample;
 import com.mybatislearn.interceptor.RequestHolder;
+import com.mybatislearn.interceptor.TokenUtil;
 import com.mybatislearn.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,12 @@ public class LocationServiceImpl implements GenericService<Location, String> {
 //    GenericService<Location, Integer>前一个为对象，后一个为主键类型
     @Autowired
     private LocationMapper locationMapper;
+    @Autowired
+    private TokenUtil tokenUtil;
 
     @Override
     public String create(Location location) {
-        location.setLocationUserCreater(RequestHolder.getId ());
+        location.setLocationUserCreater(tokenUtil.verify(RequestHolder.getId ()).getClaims().get("userId").asString());
         //使用uuid作为主键
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         location.setLocationId(uuid);

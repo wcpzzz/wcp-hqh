@@ -35,7 +35,8 @@ public class ThingServiceImpl implements GenericService<Thing, String> {
     private EmptyObject emptyObject;
     @Override
     public String create(Thing thing) {
-        thing.setThingUserCreater(tokenUtil.verify(RequestHolder.getId ()));
+//        todo
+        thing.setThingUserCreater(tokenUtil.verify(RequestHolder.getId ()).getClaims().get("userId").asString());
         //使用uuid作为主键
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         thing.setThingId(uuid);

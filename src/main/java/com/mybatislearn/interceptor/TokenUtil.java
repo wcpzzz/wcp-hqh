@@ -28,7 +28,7 @@ public class TokenUtil {
             Date expiresAt = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             token = JWT.create()
                     .withIssuer("auth0")
-//                    .withClaim("username", user2.getUserName ())
+                    .withClaim("userName", user.getUserName ())
                     .withClaim("userId", user.getUserId ())
                     .withExpiresAt(expiresAt)
                     // 使用了HMAC256加密算法。
@@ -47,17 +47,19 @@ public class TokenUtil {
      * @return*/
 
 
-    public static String verify(String token){
+    public static DecodedJWT verify(String token){
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
             DecodedJWT jwt = verifier.verify(token);
             System.out.println("认证通过：");
             System.out.println("issuer: " + jwt.getIssuer());
-//            System.out.println("username: " + jwt.getClaim("username").asString());
+            System.out.println("username: " + jwt.getClaim("userName").asString());
             System.out.println("userId: " + jwt.getClaim("userId").asString());
             System.out.println("过期时间：      " + jwt.getExpiresAt());
             //暂时先验了一个，返回个string，后期要验多个的话，就返回json
-            return jwt.getClaim("userId").asString();
+//            return jwt.getClaim("userId").asString();
+//            System.out.println (jwt.getClaims().get("userName").asString());
+            return jwt;
 //            return true;
         } catch (Exception e){
             return null;
