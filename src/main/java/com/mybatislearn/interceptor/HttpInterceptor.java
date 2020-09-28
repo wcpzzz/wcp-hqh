@@ -36,7 +36,7 @@ public class HttpInterceptor implements WebMvcConfigurer {
         // addPathPatterns("/test/**").excludePathPatterns("/test/login", "/test/register") 表示拦截/test/ 下的所有路径请求，但不拦截 /test/login 和 /test/register
 //        registry.addInterceptor (loginInterceptor).addPathPatterns ("/**");
         registry.addInterceptor (loginInterceptor).addPathPatterns("/**")
-                .excludePathPatterns("/user/login", "/user/register","/error","/","/favicon.ico")
+                .excludePathPatterns("/user/login", "/user/register","/error","/","/favicon.ico","/wxuser/signin","/wxuser/signup")
                 //放行swagger
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**","/csrf");
     }

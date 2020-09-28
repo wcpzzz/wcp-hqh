@@ -6,31 +6,10 @@ import com.mybatislearn.dao.model.ThingExample;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
-public interface ThingMapper {
-    long countByExample(ThingExample example);
-
-    int deleteByExample(ThingExample example);
-
-    int deleteByPrimaryKey(String thingId);
-
-    int insert(Thing record);
-
-    int insertSelective(Thing record);
-
-    List<Thing> selectByExample(ThingExample example);
-
-    Thing selectByPrimaryKey(String thingId);
-
-    int updateByExampleSelective(@Param("record") Thing record, @Param("example") ThingExample example);
-
-    int updateByExample(@Param("record") Thing record, @Param("example") ThingExample example);
-
-    int updateByPrimaryKeySelective(Thing record);
-
-    int updateByPrimaryKey(Thing record);
-
-
+@Component
+public interface ThingMapper extends GenericMapper<ThingExample, Thing, String> {
     //wcp
     List selectByExampleWithUser(ThingExample example);
 

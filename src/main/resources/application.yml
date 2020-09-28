@@ -11,9 +11,9 @@ server:
 spring:
   # 数据源配置
   datasource:
-    url: jdbc:mysql://39.105.34.114:3306/homeslave?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/wxapp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: '@1234asdf'
+    password: '123456'
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   # JSON返回配置
@@ -46,3 +46,16 @@ logback:
 logging:
   level:
     com.mybatislearn.dao: debug
+# 以下为新增 -hqh
+    org.springframework.web: info
+    com.github.binarywang.demo.wx.miniapp: debug
+    cn.binarywang.wx.miniapp: debug
+wx:
+  miniapp:
+    configs:
+    - appid: wxc098fd3c9a57e253 #微信小程序的appid
+      secret: b573b6e377937f71494a6a55fe7919c2 #微信小程序的Secret
+      token: 1 #微信小程序消息服务器配置的token
+      aesKey: 1 #微信小程序消息服务器配置的EncodingAESKey
+      msgDataFormat: JSON
+
